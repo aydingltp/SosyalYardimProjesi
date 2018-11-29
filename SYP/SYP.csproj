@@ -123,6 +123,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\GirisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MuhtacController.cs" />
     <Compile Include="Filtreler\GirisKontrolFiltresi.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -160,6 +161,11 @@
     <Content Include="Views\Home\List.cshtml" />
     <Content Include="Views\Shared\Search.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Muhtac\Create.cshtml" />
+    <Content Include="Views\Muhtac\Delete.cshtml" />
+    <Content Include="Views\Muhtac\Details.cshtml" />
+    <Content Include="Views\Muhtac\Edit.cshtml" />
+    <Content Include="Views\Muhtac\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

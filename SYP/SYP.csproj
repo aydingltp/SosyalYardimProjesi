@@ -121,6 +121,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BagisController.cs" />
     <Compile Include="Controllers\GirisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MuhtacController.cs" />
@@ -166,6 +167,7 @@
     <Content Include="Views\Muhtac\Details.cshtml" />
     <Content Include="Views\Muhtac\Edit.cshtml" />
     <Content Include="Views\Muhtac\Index.cshtml" />
+    <Content Include="Views\Muhtac\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -176,6 +178,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Views\Bagis\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,86 +5,67 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Muhtac</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Baslik)
-        </dt>
+<h2 style="text-align:center">@Html.DisplayFor(model => model.Baslik)</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Baslik)
-        </dd>
+<div class="container" id="adresid">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MuhtacAdiSoyadi)
-        </dt>
+    <h4>Yardım Bilgileri</h4>
+    <br />
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <strong>Adı ve Soyadı:</strong>  @Html.DisplayFor(model => model.MuhtacAdiSoyadi)
+            @*@ViewBag.Yardimturu*@
+        </div>
+        <div class="col-md-6 form-group">
+            <strong>Açıklama:</strong>  @Html.DisplayFor(model => model.Aciklama)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <strong>Yardım Türü: </strong> @Html.DisplayFor(model => model.YardimTuru.YardimTuruAdi)
+        </div>
+        <div class="col-md-6 form-group">
+            <strong>Aciliyet:</strong>  @Html.DisplayFor(model => model.Aciliyet)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <strong>Adres: </strong> @Html.DisplayFor(model => model.Adres.AdresDetay) /
+            @Html.DisplayFor(model => model.Il.IlAdi) /
+            @Html.DisplayFor(model => model.Adres.Ilce)
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.MuhtacAdiSoyadi)
-        </dd>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Aciklama)
-        </dt>
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <strong>Onay Durumu: </strong> @Html.DisplayFor(model => model.AdminOnay)
+        </div>
+        <div class="col-md-6 form-group">
+            <strong>Yardım Yapıldı mı? : </strong>  @Html.DisplayFor(model => model.YardimYapildimi)
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Aciklama)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Lat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Lat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Lng)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Lng)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EklenmeTarihi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EklenmeTarihi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Aciliyet)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Aciliyet)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.YardimYapildimi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.YardimYapildimi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AdminOnay)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdminOnay)
-        </dd>
-
-    </dl>
 </div>
+
+
+
+
+
+<style>
+    #adresid {
+        border-style: solid;
+        border-width: 1px;
+        border-color: #475846;
+        border-radius: 10px;
+        width: 900px;
+    }
+</style>
+
+
+
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

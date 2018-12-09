@@ -14,79 +14,97 @@
 </style>
 
 <div class="row">
-    @*<div class="col-md-2" style="border:solid">
+    <div class="col-md-3">
+        @Html.Partial("AramaPartial")
+        @Html.Action("bagisSayilari","Home")
+    </div>
+    <div class="col-md-9">
 
-        </div>*@
-    <div class="col-md-12">
-        <div class="row imgler">
-            <div class="col-md-2">
-                <a href="/Muhtac/List/6"><img src="~/bitirmeresim/acil.png" height="130" width="130" /></a>
-                <p style="text-align:center">Acil</p>
-            </div>
-            <div class="col-md-2">
-                <a href="/Muhtac/List/1"><img src="~/bitirmeresim/egitim.png" height="130" width="130" /></a>
-                <p style="text-align:center">Eğitim</p>
-            </div>
-            <div class="col-md-2">
-                <a href="/Muhtac/List/2"><img src="~/bitirmeresim/tl22.png" height="130" width="130" /></a>
-                <p style="text-align:center">Maddi</p>
-            </div>
-            <div class="col-md-2">
-                <a href="/Muhtac/List/3"><img src="~/bitirmeresim/saglik.jpg" height="130" width="130" /></a>
-                <p style="text-align:center">Sağlık</p>
-            </div>
-            <div class="col-md-2">
-                <a href="/Muhtac/List/4"><img src="~/bitirmeresim/food.jpg" height="130" width="130" /></a>
-                <p style="text-align:center">Gıda</p>
-            </div>
-            <div class="col-md-2">
-                <a href="/Muhtac/List/5"><img src="~/bitirmeresim/giysi2.png" height="130" width="130" /></a>
-                <p style="text-align:center">Giyim</p>
-            </div>
+        <div class="row">
+            @*<div class="col-md-2" style="border:solid">
 
+            </div>*@
+            <div class="col-md-12">
+                <div class="row imgler">
+                    <div class="col-md-2">
+                        <a href="/Muhtac/List/6"><img src="~/bitirmeresim/acil.png" height="100" width="100" /></a>
+                        <p style="text-align:center">Acil</p>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="/Muhtac/List/1"><img src="~/bitirmeresim/egitim.png" height="100" width="100" /></a>
+                        <p style="text-align:center">Eğitim</p>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="/Muhtac/List/2"><img src="~/bitirmeresim/tl22.png" height="100" width="100" /></a>
+                        <p style="text-align:center">Maddi</p>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="/Muhtac/List/3"><img src="~/bitirmeresim/saglik.jpg" height="100" width="100" /></a>
+                        <p style="text-align:center">Sağlık</p>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="/Muhtac/List/4"><img src="~/bitirmeresim/food.jpg" height="100" width="100" /></a>
+                        <p style="text-align:center">Gıda</p>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="/Muhtac/List/5"><img src="~/bitirmeresim/giysi2.png" height="100" width="100" /></a>
+                        <p style="text-align:center">Giyim</p>
+                    </div>
+
+                </div>
+
+                <h2 class="alert-success"> Yardım Bekleyen İhtiyaç Sahipleri </h2>
+                <table class="table table-bordered table-striped table-hover ">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Baslik)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Aciklama)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Adres)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Aciliyet)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Baslik)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Aciklama)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Il.IlAdi) /
+                                @Html.DisplayFor(modelItem => item.Adres.Ilce)
+                            </td>
+                            <td>
+                                @if (item.Aciliyet == 5 || item.Aciliyet == 4)
+                                {
+                                    <span class="badge badge-danger"> @Html.DisplayFor(modelItem => item.Aciliyet)</span>
+                                }
+                                else
+                                {
+                                    <span class="badge"> @Html.DisplayFor(modelItem => item.Aciliyet)</span>
+                                }
+
+                            </td>
+                            <td>
+                                @Html.ActionLink("Detay", "Details", "Muhtac", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+            </div>
         </div>
-
-        <h2 class="alert-success"> Yardım Bekleyen İhtiyaç Sahipleri </h2>
-        <table class="table table-bordered table-striped table-hover ">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Baslik)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Aciklama)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Adres)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Aciliyet)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Baslik)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Aciklama)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Il.IlAdi) /
-                        @Html.DisplayFor(modelItem => item.Adres.Ilce)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Aciliyet)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Detay", "Detay", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
-                    </td>
-                </tr>
-            }
-
-        </table>
 
     </div>
 </div>

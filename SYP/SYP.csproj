@@ -137,7 +137,10 @@
     <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\Muhtac.cs" />
     <Compile Include="Models\Portal.cs" />
+    <Compile Include="Models\viewModel\bagisYapPartialModel.cs" />
     <Compile Include="Models\viewModel\loginModel.cs" />
+    <Compile Include="Models\viewModel\muhtacVeOnayModel.cs" />
+    <Compile Include="Models\viewModel\onayCheckModel.cs" />
     <Compile Include="Models\YardimTuru.cs" />
     <Compile Include="Models\Yorum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -153,21 +156,19 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Giris\Kayit.cshtml" />
-    <Content Include="Views\Home\IhtiyacSahibiEkle.cshtml" />
     <Content Include="Views\Home\Portal.cshtml" />
     <Content Include="Views\Giris\Login.cshtml" />
-    <Content Include="Views\Home\IhtiyacSahibiDetay.cshtml" />
     <Content Include="Views\Giris\Index.cshtml" />
-    <Content Include="Views\Giris\MuhtacDuzenle.cshtml" />
-    <Content Include="Views\Home\List.cshtml" />
-    <Content Include="Views\Shared\Search.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\AramaPartial.cshtml" />
     <Content Include="Views\Muhtac\Create.cshtml" />
     <Content Include="Views\Muhtac\Delete.cshtml" />
     <Content Include="Views\Muhtac\Details.cshtml" />
     <Content Include="Views\Muhtac\Edit.cshtml" />
     <Content Include="Views\Muhtac\Index.cshtml" />
     <Content Include="Views\Muhtac\List.cshtml" />
+    <Content Include="Views\Bagis\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Home\bagisSayilari.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -178,7 +179,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Views\Bagis\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

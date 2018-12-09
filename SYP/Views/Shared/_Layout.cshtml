@@ -22,32 +22,15 @@
                 <ul class="navbar-nav mr-auto">
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="/Muhtac/Ekle">Yardım İste</a>
+                        <a class="nav-link" href="/Muhtac/Create">Yardım İste</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/Home/Ekle">Bağış Yap</a>
+                        <a class="nav-link" href="/Muhtac/List">Bağış Yap</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="/Home/Portal">Portal</a>
                     </li>
-                    <li class="nav-item active" style="padding-left:7%">
-                        @using (Html.BeginForm("List", "Home", FormMethod.Get))
-                        {
-                            <div class="well">
-                                <div class="input-group" style="" >
-                                    @Html.TextBox("q", null, new { @class = "form-control" } )
-                                 
-                                        <button class="btn btn-default" type="submit" style="margin-left:10px">
-                                            <span class="glyphicon glyphicon-search">Ara</span>
-                                        </button>
-                                   
-                                </div>
-                            </div>
-
-                        }
-                    </li>
-
-
+                    
                 </ul>
               
 
@@ -61,7 +44,9 @@
                             <li class="nav-item active" style="padding-right:6px;">
                                 <a href="/Giris/Index" style="color:aliceblue">@Session["kullaniciadi"].ToString()</a>
                             </li>
-                            <a style="padding-right:6px; padding-left:6px; color:aliceblue;">|</a>
+                            <li>
+                                <a style="padding-right:6px; padding-left:6px; color:aliceblue;">|</a>
+                            </li>
                             <li class="nav-item active">
                                 <a href="/Giris/Logout" style="color:aliceblue"> Çıkış </a>
                             </li>
@@ -80,7 +65,9 @@
                             <li class="nav-item active" style="">
                                 <a href="/Giris/Login" style="color:aliceblue">Giriş Yap</a>
                             </li>
-                            <a style="padding-right:6px; padding-left:6px; color:aliceblue;">|</a>
+                            <li>
+                                <a style="padding-right:6px; padding-left:6px; color:aliceblue;">|</a>
+                            </li>
                             <li class="nav-item active">
                                 <a href="/Giris/Kayit" style="color:aliceblue">Kayıt Ol</a>
                             </li>
@@ -100,7 +87,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-12" style="padding:15px;">
+            <div class="col-md-12" style="padding-top:15px;">
                 @RenderBody()
             </div>
 

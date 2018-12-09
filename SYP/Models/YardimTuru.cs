@@ -14,5 +14,6 @@ namespace SYP.Models
         [Display(Name = "Yardım Türü")]
         public string  YardimTuruAdi { get; set; }
 
+        
     }
 }

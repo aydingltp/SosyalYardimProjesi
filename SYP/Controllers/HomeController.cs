@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.Net;
 using SYP.Filtreler;
+using SYP.Models.viewModel;
 
 namespace SYP.Controllers
 {
@@ -20,38 +21,26 @@ namespace SYP.Controllers
             return View(muhtaclar);
         }
 
-        //public ActionResult List(int? id, string q)
-        //{
-        //    var muhtaclar = db.Muhtaclar.Where(i=>i.AdminOnay==true).AsQueryable();
-
-        //    if (id != null)
-        //    {
-        //        if (id == 6)
-        //        {
-        //            muhtaclar = db.Muhtaclar.Where(i => i.Aciliyet == 5).Where(i => i.AdminOnay == true);
-        //        }
-        //        else
-        //        {
-        //            muhtaclar = db.Muhtaclar.Where(i => i.YardimTuru.Id == id).Where(i => i.AdminOnay == true);
-        //        }
-        //    }
-        //    if (string.IsNullOrEmpty(q) == false)
-        //    {
-        //        muhtaclar = muhtaclar.Where(i => i.Baslik.Contains(q) || i.Aciklama.Contains(q));
-        //    }
-
-        //    return View(muhtaclar.Include(i => i.Adres).Include(i => i.Il).ToList());
-        //}
-
-       
-
-
+            
         public ActionResult Portal()
         {
             return View();
         }
 
-
+        public PartialViewResult bagisSayilari()
+        {
+            var muhtaclar = db.Muhtaclar.Where(i => i.AdminOnay == true);
+            bagisYapPartialModel models = new bagisYapPartialModel()
+            {
+                Acil = muhtaclar.Count(p => p.Aciliyet == 5),
+                Egitim = muhtaclar.Count(p => p.YardimTuru.Id ==1 ),
+                Gida = muhtaclar.Count(p => p.YardimTuru.Id==4),
+                Giyim = muhtaclar.Count(p => p.YardimTuru.Id == 5),
+                Maddi = muhtaclar.Count(p => p.YardimTuru.Id == 2),
+                Saglik = muhtaclar.Count(p => p.YardimTuru.Id == 3)
+            };
+            return PartialView("bagisSayilari", models);
+        }
 
 
     }

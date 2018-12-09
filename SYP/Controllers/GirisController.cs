@@ -24,49 +24,7 @@ namespace SYP.Controllers
             return View(muhtaclar.ToList());
         }
 
-
-        [HttpGet]
-        [Route("Giris/Edit/{id}")]
-        public ActionResult MuhtacDuzenle(int? id)
-        {
-            if (id==null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Muhtac muhtac = db.Muhtaclar.Find(id);
-            if (muhtac==null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(muhtac);
-        }
-        [Route("Giris/Edit/{id}")]
-        [HttpPost]
-        public ActionResult MuhtacDuzenle(Muhtac muhtac)
-        {
-            if (ModelState.IsValid)
-            {
-                var entity = db.Muhtaclar.Find(muhtac.Id);
-                if (entity!=null)
-                {
-                    entity.Baslik = muhtac.Baslik;
-                    entity.Aciklama = muhtac.Aciklama;
-                    entity.MuhtacAdiSoyadi = muhtac.MuhtacAdiSoyadi;
-                    entity.Adres = muhtac.Adres;
-                    entity.Il = muhtac.Il;
-                    entity.YardimTuru = muhtac.YardimTuru;
-                    entity.Aciliyet = muhtac.Aciliyet;
-                    entity.YardimYapildimi = muhtac.YardimYapildimi;
-                    db.SaveChanges();
-                    TempData["Duzenlendi"] = entity;
-                    return RedirectToAction("Index");
-                }
-            }
-
-            return View(muhtac);
-        }
-
+        
 
         [HttpGet]
         public ActionResult Login()

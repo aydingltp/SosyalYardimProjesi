@@ -54,15 +54,15 @@
                 @Html.DisplayFor(modelItem => item.Aciliyet)
             </td>
             <td>
-                @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
-                @Html.ActionLink("Detay", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" }) |
-                @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                @Html.ActionLink("Düzenle","Edit", "Muhtac", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
+                @Html.ActionLink("Detay", "Details", "Muhtac", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" }) |
+                @Html.ActionLink("Sil", "Delete", "Muhtac", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
             </td>
         </tr>
     }
 
 </table>
 <p>
-    @Html.ActionLink("İhtiyaç Sahibi Ekle", "Ekle", "Home", new { area = "" }, new { @class = "btn btn-success btn-xs" })
+    @Html.ActionLink("İhtiyaç Sahibi Ekle", "Create", "Muhtac", new { area = "" }, new { @class = "btn btn-success btn-xs" })
     @*@Html.ActionLink("Create New","/Home/Ekle","",new {@class="btn btn-success"})*@
 </p>

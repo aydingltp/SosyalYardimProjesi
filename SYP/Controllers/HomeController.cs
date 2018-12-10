@@ -27,6 +27,19 @@ namespace SYP.Controllers
             return View();
         }
 
+        public PartialViewResult bagisIstatistik()
+        {
+            var yardimsayisi = db.Muhtaclar.Where(i => i.AdminOnay == true);
+
+            bagisSayilariPartialModel models = new bagisSayilariPartialModel()
+            {
+                yapilacakyardim = yardimsayisi.Count(i => i.YardimYapildimi == false),
+                yapilanyardim = yardimsayisi.Count(i => i.YardimYapildimi == true)
+            };
+
+
+            return PartialView("bagisIstatistik",models);
+        }
         public PartialViewResult bagisSayilari()
         {
             var muhtaclar = db.Muhtaclar.Where(i => i.AdminOnay == true);

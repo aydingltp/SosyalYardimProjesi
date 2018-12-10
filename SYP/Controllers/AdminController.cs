@@ -46,8 +46,6 @@ namespace SYP.Controllers
                 if (id == 6)
                 {
                     muhtaclar = muhtaclar.OrderByDescending(i => i.Aciliyet);
-
-                    return View(muhtaclar.ToList());
                 }
                 else
                 {
@@ -59,7 +57,8 @@ namespace SYP.Controllers
                 muhtaclar = muhtaclar.Where(i => i.Baslik.Contains(q) || i.Aciklama.Contains(q));
             }
 
-            return View(muhtaclar.ToList());
+            var listeMuhtac = muhtaclar.ToList();
+            return View(listeMuhtac);
         }
 
         [HttpPost]

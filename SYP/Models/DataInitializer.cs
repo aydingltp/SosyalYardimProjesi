@@ -36,9 +36,9 @@ namespace SYP.Models
             context.SaveChanges();
             List<Kullanici> kullanici = new List<Kullanici>()
             {
-                new Kullanici(){Isim="Aydın",Soyisim="Gültepe",Cep="5541407046",Eposta="aydngltp@gmail.com",Sifre="123",SifreConfirm="123",Adminmi=true},
-                new Kullanici(){Isim="kullanici1",Soyisim="Gültepe",Cep="123",Eposta="aydngltp@gmail.com",Sifre="kullanici1",SifreConfirm="kullanici1",Adminmi=false},
-                new Kullanici(){Isim="kullanici2",Soyisim="Gültepe",Cep="123",Eposta="aydngltp@gmail.com",Sifre="kullanici2",SifreConfirm="kullanici2",Adminmi=false}
+                new Kullanici(){Isim="Aydın",Soyisim="Gültepe",Cep="5541407046",Eposta="aydngltp@gmail.com",Sifre="a0",SifreConfirm="a0",Adminmi=true},
+                new Kullanici(){Isim="kullanici1",Soyisim="Gültepe",Cep="123",Eposta="aydngltp@gmail.com",Sifre="a1",SifreConfirm="a1",Adminmi=false},
+                new Kullanici(){Isim="kullanici2",Soyisim="Gültepe",Cep="123",Eposta="aydngltp@gmail.com",Sifre="a2",SifreConfirm="a2",Adminmi=false}
             };
             foreach (var item in kullanici)
             {
@@ -51,7 +51,7 @@ namespace SYP.Models
                 new YardimTuru(){YardimTuruAdi="Maddi"},
                 new YardimTuru(){YardimTuruAdi="Sağlık"},
                 new YardimTuru(){YardimTuruAdi="Gıda"},
-                new YardimTuru(){YardimTuruAdi="Giysi"}
+                new YardimTuru(){YardimTuruAdi="Giyim"}
             };
             foreach (var item in turler)
             {
@@ -75,7 +75,7 @@ namespace SYP.Models
                 new Muhtac()
                 {
                     Baslik ="Acil Maddi Destek",
-                    Aciklama =" Maddi yardım gerekiyor.",
+                    Aciklama ="Maddi yardım gerekiyor.",
                     YardimTuru=context.YardimTurler.FirstOrDefault(i=>i.Id==2),
                     Aciliyet =5,
                     Adres =new Adres{Ilce="ilce2",
@@ -88,7 +88,7 @@ namespace SYP.Models
                 new Muhtac()
                 {
                     Baslik ="Sağlık Yardımı",
-                    Aciklama =" Sağlık kontrolü için yardıma ihtiyacımız var.",
+                    Aciklama ="Sağlık kontrolü için yardıma ihtiyacımız var.",
                     YardimTuru=context.YardimTurler.FirstOrDefault(i=>i.Id==3),
                     Aciliyet =5,
                     Adres =new Adres{Ilce="ilce3",

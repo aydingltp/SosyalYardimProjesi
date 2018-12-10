@@ -1,0 +1,21 @@
+﻿@model SYP.Models.viewModel.bagisSayilariPartialModel
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card text-white bg-danger mb-3" style="max-width: 30rem;">
+            <div class="card-header"><h5>Bekleyen İhtiyaç Sahibi Sayısı</h5></div>
+            <div class="card-body">
+                <h6 class="card-title">Toplam : <strong>@Model.yapilacakyardim</strong>  adet ihtiyaç sahibi yardım bekliyor.</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card text-white bg-success mb-3" style="max-width: 30rem;">
+            <div class="card-header"><h5>Yapılan Yardım Sayısı</h5></div>
+            <div class="card-body">
+                <h6 class="card-title">Toplam : @Model.yapilanyardim tane yardım yapıldı.</h6>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <title>Hello, world!</title>
 </head>
@@ -30,9 +31,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/Home/Portal">Portal</a>
                     </li>
-                    
+
                 </ul>
-              
+
 
 
 
@@ -42,8 +43,9 @@
                     {
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active" style="padding-right:6px;">
-                                <a href="/Giris/Index" style="color:aliceblue">@Session["kullaniciadi"].ToString()</a>
+                                <a href="/Giris/Index" style="color:aliceblue"><i class="far fa-user">&ensp;</i>@Session["kullaniciadi"].ToString()</a>
                             </li>
+
                             <li>
                                 <a style="padding-right:6px; padding-left:6px; color:aliceblue;">|</a>
                             </li>
@@ -53,7 +55,7 @@
                             @if (Convert.ToBoolean(Session["yetki"]) == true)
                             {
                                 <li class="nav-item active" style="">
-                                    <a href="/Admin/Index" style="color:burlywood; padding-left:9px;">Admin Panel</a>
+                                    <a href="/Admin/Index" style="color:burlywood; padding-left:9px;"><strong>Admin Panel</strong></a>
                                 </li>
                             }
                         </ul>
@@ -102,4 +104,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
 

@@ -137,6 +137,7 @@
     <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\Muhtac.cs" />
     <Compile Include="Models\Portal.cs" />
+    <Compile Include="Models\viewModel\bagisSayilariPartialModel.cs" />
     <Compile Include="Models\viewModel\bagisYapPartialModel.cs" />
     <Compile Include="Models\viewModel\loginModel.cs" />
     <Compile Include="Models\viewModel\muhtacVeOnayModel.cs" />
@@ -169,6 +170,7 @@
     <Content Include="Views\Bagis\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\bagisSayilari.cshtml" />
+    <Content Include="Views\Home\bagisIstatistik.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

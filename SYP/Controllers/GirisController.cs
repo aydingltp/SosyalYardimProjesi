@@ -35,11 +35,13 @@ namespace SYP.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(loginModel kullanici)
-        {           
+        {
+            //kullanici.Tel = "5541407046";
+            //kullanici.Sifre = "a0";
             if (ModelState.IsValid)
             {
-                var login = db.Kullanicilar.FirstOrDefault(p => p.Cep == kullanici.Tel && p.Sifre == kullanici.Sifre);
-                if (login!=null)
+                var login = db.Kullanicilar.FirstOrDefault(p => p.Tel == kullanici.Tel && p.Sifre == kullanici.Sifre);
+                if (login != null)
                 {
                     Session["uyeid"] = login.Id;
                     Session["kullaniciadi"] = login.Isim;
@@ -48,9 +50,7 @@ namespace SYP.Controllers
                 }
                 else
                 {
-                   TempData["hata"] = "Telefon Numarası veya Şifre Yanlış.";
-                    //TempData["LoginHata"] = "Cep Telefonu veya Şifre Yanlış.";
-                    //ModelState.AddModelError(string.Empty, "Cep Telefonu veya Şifre Yanlış.");
+                    TempData["hata"] = "Telefon Numarası veya Şifre Yanlış.";
                 }
             }
             return View(kullanici);

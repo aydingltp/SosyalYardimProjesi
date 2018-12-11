@@ -15,7 +15,11 @@ namespace SYP.Controllers
         // GET: Admin
         public ActionResult Index(int? id, string q)
         {
-            var muhtaclar = db.Muhtaclar.Include(p => p.Adres).Include(p => p.Il).OrderBy(i=>i.AdminOnay).AsQueryable();
+            var muhtaclar = db.Muhtaclar
+                            .Include(p=>p.Kullanici)
+                            .Include(p => p.Adres)
+                            .Include(p => p.Il).Include(i=>i.YardimTuru)
+                            .OrderBy(i=>i.AdminOnay).AsQueryable();
 
             if (id != null)
             {

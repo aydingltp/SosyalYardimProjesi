@@ -23,7 +23,7 @@ namespace SYP.Models
         [Display(Name = "Cep Telefonu")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage ="Uygun bir cep telefonu giriniz.")]
-        public string Cep { get; set; }
+        public string Tel { get; set; }
 
         [Required]
         [Display(Name = "E-Posta")]

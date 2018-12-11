@@ -30,6 +30,8 @@ namespace SYP.Models
         public Adres Adres { get; set; }  //foreign key
         public decimal Lat { get; set; }
         public decimal Lng { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? EklenmeTarihi { get; set; }
 
         [Range(1, 5,ErrorMessage ="Aciliyet derecesi 1-5 arasında olmalı. 1: Acil Değil 5: Çok Acil")]

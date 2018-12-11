@@ -36,9 +36,9 @@ namespace SYP.Models
             context.SaveChanges();
             List<Kullanici> kullanici = new List<Kullanici>()
             {
-                new Kullanici(){Isim="Aydın",Soyisim="Gültepe",Cep="5541407046",Eposta="aydngltp@gmail.com",Sifre="a0",SifreConfirm="a0",Adminmi=true},
-                new Kullanici(){Isim="kullanici1",Soyisim="Gültepe",Cep="123",Eposta="aydngltp@gmail.com",Sifre="a1",SifreConfirm="a1",Adminmi=false},
-                new Kullanici(){Isim="kullanici2",Soyisim="Gültepe",Cep="123",Eposta="aydngltp@gmail.com",Sifre="a2",SifreConfirm="a2",Adminmi=false}
+                new Kullanici(){Isim="Aydın",Soyisim="Gültepe",Tel="5541407046",Eposta="aydngltp@gmail.com",Sifre="a0",SifreConfirm="a0",Adminmi=true},
+                new Kullanici(){Isim="kullanici1",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a1",SifreConfirm="a1",Adminmi=false},
+                new Kullanici(){Isim="kullanici2",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a2",SifreConfirm="a2",Adminmi=false}
             };
             foreach (var item in kullanici)
             {
@@ -70,7 +70,8 @@ namespace SYP.Models
                     Adres =new Adres{Ilce="ilce1",AdresDetay ="ataşehir mah. çankaya sk. no:12"},
                     Il=context.Iller.FirstOrDefault(p=>p.Id==1),
                     MuhtacAdiSoyadi ="Muhtac1", AdminOnay=true,
-                    Kullanici =context.Kullanicilar.FirstOrDefault(p=>p.Id==2)
+                    Kullanici =context.Kullanicilar.FirstOrDefault(p=>p.Id==2),
+                    EklenmeTarihi=DateTime.Today
                 },
                 new Muhtac()
                 {
@@ -83,7 +84,8 @@ namespace SYP.Models
                     Il=context.Iller.FirstOrDefault(p=>p.Id==22),
                     MuhtacAdiSoyadi ="Muhtac2",
                     AdminOnay =true,
-                    Kullanici =context.Kullanicilar.FirstOrDefault(p=>p.Id==3)
+                    Kullanici =context.Kullanicilar.FirstOrDefault(p=>p.Id==3),
+                    EklenmeTarihi=DateTime.Today
                 },
                 new Muhtac()
                 {
@@ -96,7 +98,8 @@ namespace SYP.Models
                     Il=context.Iller.FirstOrDefault(p=>p.Id==43),
                     MuhtacAdiSoyadi ="Muhtac3",
                     AdminOnay =true,
-                    Kullanici =context.Kullanicilar.FirstOrDefault(p=>p.Id==2)
+                    Kullanici =context.Kullanicilar.FirstOrDefault(p=>p.Id==2),
+                    EklenmeTarihi=DateTime.Today
                 }
 
             };

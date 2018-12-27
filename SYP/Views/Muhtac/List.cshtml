@@ -48,6 +48,8 @@
         </div>
 
         <h2 class="alert-success" style="text-align:center"> Yardım Bekleyen İhtiyaç Sahipleri </h2>
+
+
         <table class="table table-bordered table-striped table-hover ">
             <tr>
                 <th>
@@ -67,6 +69,7 @@
 
             @foreach (var item in Model)
             {
+
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Baslik)
@@ -96,6 +99,13 @@
             }
 
         </table>
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger">
+                <h4> Kayıt Bulunamadı...</h4>
+            </div>
+        }
 
     </div>
 </div>

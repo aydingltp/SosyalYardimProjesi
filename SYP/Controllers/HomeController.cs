@@ -17,6 +17,7 @@ namespace SYP.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            //List<Kullanici> kullanicilar = db.Kullanicilar.ToList();*****
             var muhtaclar = db.Muhtaclar.Include(p => p.Adres).Include(p => p.Il).Where(i=>i.AdminOnay==true).ToList();
             return View(muhtaclar);
         }

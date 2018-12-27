@@ -21,12 +21,62 @@ namespace SYP.Controllers
         {
             return View(db.Muhtaclar.ToList());
         }
+
+        public JsonResult YorumYap(string yorum, int? muhtacid)
+        {
+            var kullaniciid = Session["uyeid"];
+            if (yorum != null)
+            {
+                db.Yorumlar.Add(new Yorum() { KullaniciId = Convert.ToInt32(kullaniciid), MuhtacId = Convert.ToInt32(muhtacid), YorumIcerik = yorum, YorumTarihi = DateTime.Now });
+                TempData["Yorumeklendi"] = "Yorum Eklendi.";
+                db.SaveChanges();
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult YorumSil(int? yorumid, int? muhtacid)
+        {
+            var uyeid = Session["uyeid"];
+            var yorum = db.Yorumlar.Where(i => i.Id == yorumid).SingleOrDefault();
+            var muhtac = db.Muhtaclar.Where(i => i.Id == yorum.KullaniciId).SingleOrDefault();
+            if (yorumid != null)
+            {
+                if (yorum.KullaniciId == Convert.ToInt32(uyeid))
+                {
+                    db.Yorumlar.Remove(yorum);
+                    db.SaveChanges();
+                    TempData["Yorumsil"] = "Yorum Silindi";
+                    return RedirectToAction("Details","Muhtac", new { id = muhtacid }); 
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+
+            }
+            else
+            {
+                TempData["Yorumid"] = "yorum seçiniz";
+                return RedirectToAction("Details", "Muhtac", new { id = muhtac.Id });
+            }
+        }
+
+        public PartialViewResult YorumList(int? id)
+        {
+            var yorumlist = db.Yorumlar.Where(i => i.MuhtacId == id).ToList();
+            return PartialView("_YorumList", yorumlist);
+        }
         public ActionResult Onay(int? id)
         {
             return View(db.Muhtaclar.ToList());
         }
 
-
+        public ActionResult OkunmaArttir(int muhtacid)
+        {
+            var muhtac = db.Muhtaclar.Where(m => m.Id == muhtacid).SingleOrDefault();
+            muhtac.Okunma += 1;
+            db.SaveChanges();
+            return View();
+        }
         [GirisKontrolFiltresi]
         public ActionResult List(int? id, string q)
         {
@@ -41,7 +91,6 @@ namespace SYP.Controllers
                 else
                 {
                     muhtaclar = muhtaclar.Where(i => i.YardimTuru.Id == id);
-
                 }
             }
             if (string.IsNullOrEmpty(q) == false)
@@ -63,7 +112,7 @@ namespace SYP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var muhtac = db.Muhtaclar.Include(i=>i.Il).Include(i => i.Adres).Include(i => i.YardimTuru).Where(i => i.Id == id).FirstOrDefault();
+            var muhtac = db.Muhtaclar.Include(i => i.Il).Include(i => i.Adres).Include(i => i.YardimTuru).Where(i => i.Id == id).FirstOrDefault();
             //Muhtac muhtac = db.Muhtaclar.Include(b => b.Adres).Include(b=>b.Il).FirstOrDefault(b => b.Id == id);
             //Find metodu çalışmadı onun yerine firstofdefault kullanıldı.
 
@@ -122,13 +171,14 @@ namespace SYP.Controllers
                     Kullanici = db.Kullanicilar.FirstOrDefault(p => p.Id == kullaniciId),
                     MuhtacAdiSoyadi = muhtac.MuhtacAdiSoyadi,
                     YardimTuru = db.YardimTurler.FirstOrDefault(p => p.Id == muhtac.YardimTuru.Id),
-                    Il = db.Iller.FirstOrDefault(p => p.Id == muhtac.Il.Id)
+                    Il = db.Iller.FirstOrDefault(p => p.Id == muhtac.Il.Id),
+                    Okunma = 0
                 };
                 //yenimuhtac.AdminOnay = false; gerek var mı?
                 db.Muhtaclar.Add(yenimuhtac);
                 db.SaveChanges();
 
-                return RedirectToAction("Index","Giris");
+                return RedirectToAction("Index", "Giris");
             }
 
 
@@ -166,7 +216,7 @@ namespace SYP.Controllers
             }
 
 
-             List<SelectListItem> yardimturleri = (from i in db.YardimTurler.ToList()
+            List<SelectListItem> yardimturleri = (from i in db.YardimTurler.ToList()
                                                   select new SelectListItem
                                                   {
                                                       Text = i.YardimTuruAdi,
@@ -220,7 +270,7 @@ namespace SYP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Muhtac muhtac = db.Muhtaclar.Include(i => i.Adres).Include(i => i.Il).FirstOrDefault(i=>i.Id==id);
+            Muhtac muhtac = db.Muhtaclar.Include(i => i.Adres).Include(i => i.Il).FirstOrDefault(i => i.Id == id);
             if (muhtac == null)
             {
                 return HttpNotFound();
@@ -239,7 +289,7 @@ namespace SYP.Controllers
             return RedirectToAction("Index");
         }
 
-        
+
 
         protected override void Dispose(bool disposing)
         {

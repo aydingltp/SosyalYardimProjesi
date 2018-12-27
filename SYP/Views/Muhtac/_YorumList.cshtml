@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SYP.Models.Yorum>
+
+<div class="card" style="width:100%; margin-top:20px; margin-bottom:20px; border:solid 2px rgba(184, 181, 181, 0.85)">
+    <div class="alert alert-primary"><strong>Yapılan Yorumlar</strong>  </div>
+
+    <table class="table table-bordered  ">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="10%">
+                    @Html.DisplayFor(modelItem => item.Kullanici.Isim)
+                </td>
+                <td width="65%">
+                    @Html.DisplayFor(modelItem => item.YorumIcerik)
+                </td>
+                <td width="20%">
+                    @Html.DisplayFor(modelItem => item.YorumTarihi)
+                </td>
+                <td width="15%">
+                    @if (Convert.ToInt32(Session["uyeid"]) == item.KullaniciId)
+                    {
+                        @Html.ActionLink("Sil", "YorumSil", new { yorumid = item.Id, muhtacId = item.MuhtacId }, new { @class = "btn btn-danger" })
+                    }
+                </td>
+            </tr>
+
+        }
+
+    </table>
+    @if (TempData["Yorumeklendi"] != null)
+    {
+        <div class="alert alert-success">@TempData["Yorumeklendi"]</div>
+    }
+    @if (TempData["Yorumid"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Yorumid"]</div>
+    }
+    @if (TempData["Yorumsil"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Yorumsil"]</div>
+    }
+</div>
+
+

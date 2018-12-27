@@ -9,15 +9,18 @@ namespace SYP.Models
     public class Yorum
     {
         public int Id { get; set; }
-        public Kullanici Kullanici { get; set; }
-        public Muhtac Muhtac { get; set; }
+
+        public int? KullaniciId { get; set; }
+        public int? MuhtacId { get; set; }
+
 
         [Display(Name = "Yorum Yap")]
+        [StringLength(500)]
         public string YorumIcerik { get; set; }
         public DateTime? YorumTarihi { get; set; }
         public Portal Portal { get; set; }
-        
-
+        public virtual Kullanici Kullanici { get; set; }
+        public virtual Muhtac Muhtac { get; set; }
 
     }
 }

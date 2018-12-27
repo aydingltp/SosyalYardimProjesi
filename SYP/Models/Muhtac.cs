@@ -41,10 +41,11 @@ namespace SYP.Models
         
         public bool YardimYapildimi { get; set; }
         public bool AdminOnay { get; set; }
+        public int? Okunma { get; set; }
 
         public Kullanici Kullanici { get; set; }
 
-        public List<Yorum> Yorum { get; set; }
+        //public List<Yorum> Yorum { get; set; }
 
         
 

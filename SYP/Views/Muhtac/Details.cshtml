@@ -6,6 +6,7 @@
 }
 
 
+
 <h2 style="text-align:center">@Html.DisplayFor(model => model.Baslik)</h2>
 
 <div class="container" id="adresid">
@@ -15,7 +16,6 @@
     <div class="row">
         <div class="col-md-6 form-group">
             <strong>Adı ve Soyadı:</strong>  @Html.DisplayFor(model => model.MuhtacAdiSoyadi)
-            @*@ViewBag.Yardimturu*@
         </div>
         <div class="col-md-6 form-group">
             <strong>Açıklama:</strong>  @Html.DisplayFor(model => model.Aciklama)
@@ -47,11 +47,71 @@
         </div>
     </div>
 
+
+    <div class="row">
+        <div class="col">
+            <p>
+                @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Geri", "Index", null, new { @class = "btn btn-light" })
+            </p>
+        </div>
+        <div class="col">
+            <span class="alert alert-success"> <strong>@Model.Okunma.ToString()</strong> defa görüntülendi. </span>
+        </div>
+    </div>
+
+
+</div>
+<div class="container" style="width:900px; margin-top:30px">
+
+    <div class="row">
+        @Html.Action("YorumList", new { id = Model.Id })
+    </div>
+    @if (Session["uyeid"] != null)
+    {
+        <div class="row" style="margin-bottom:20px;">
+            <div class="card" style="width:100%; padding:20px;">
+                <form role="form">
+                    <div class="form-group">
+                        <textarea class="form-control" id="yorum" typeof="text" rows="1"></textarea>
+                    </div>
+                    <button type="submit" id="gonder" class="btn btn-primary">Yorum Yap</button>
+                </form>
+            </div>
+        </div>
+    }
+
 </div>
 
 
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
 
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#gonder").click(function () {
+            var yorumunuz = $("#yorum").val();
+            $.ajax({
+                url: '/Muhtac/YorumYap',
+                data: { yorum:yorumunuz, muhtacid:@Model.Id },
+                type: 'POST',
+                dataType: 'json',
+                //success: function (data) { alert("Yorum Gönderildi" + yorumunuz); }
+            });
+        });
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Muhtac/OkunmaArttir/',
+            data: { muhtacid: @Model.Id },
+            type:'POST',
+        });
+    })
+</script>
 
 <style>
     #adresid {
@@ -65,8 +125,3 @@
 
 
 
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

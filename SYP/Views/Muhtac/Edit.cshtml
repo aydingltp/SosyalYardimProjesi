@@ -12,7 +12,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Muhtac</h4>
+            <h4>Düzenle</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -97,7 +97,19 @@
                     @Html.ValidationMessageFor(model => model.Adres.AdresDetay, "", new { @class = "text-danger" })
                 </div>
             </div>
-
+            <div class="form-group form-check">
+                <div class="row">
+                    <div class="col-md-2">
+                        <h6>Yardım Yapıldımı?</h6>
+                    </div>
+                    <div class="col">
+                        @Html.CheckBoxFor(model => model.YardimYapildimi, new { @class = " form-check-input", @style = "height:25px; width:25px;" })
+                        @Html.ValidationMessageFor(model => model.YardimYapildimi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+             
+            </div>
+            <br />
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Kaydet" class="btn btn-success" />

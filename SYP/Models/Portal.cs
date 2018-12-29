@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,13 +14,14 @@ namespace SYP.Models
         [Required]
         [Display(Name = "Başlık")]
         public string Baslik { get; set; }
+
         public string  Resim { get; set; }
         [Required]
         [Display(Name = "İçerik Giriniz")]
+        [DataType(DataType.MultilineText)]
         public string Icerik { get; set; }
         public DateTime? EklenmeTarihi { get; set; }
-        [Required]
-        public Kategori Kategori { get; set; }
+
         public List<Yorum> Yorum { get; set; }
 
     }

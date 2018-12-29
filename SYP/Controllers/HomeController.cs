@@ -21,11 +21,10 @@ namespace SYP.Controllers
             var muhtaclar = db.Muhtaclar.Include(p => p.Adres).Include(p => p.Il).Where(i=>i.AdminOnay==true).ToList();
             return View(muhtaclar);
         }
-
-            
         public ActionResult Portal()
         {
-            return View();
+            var list = db.Portallar.ToList();
+            return View(list);
         }
 
         public PartialViewResult bagisIstatistik()

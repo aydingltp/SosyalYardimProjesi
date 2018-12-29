@@ -132,17 +132,18 @@ namespace SYP.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+
             List<SelectListItem> yardimturleri = (from i in db.YardimTurler.ToList()
                                                   select new SelectListItem
                                                   {
-                                                      Text = i.YardimTuruAdi,
+                                                      Text = i.YardimTuruAdi.ToString(),
                                                       Value = i.Id.ToString()
                                                   }).ToList();
             ViewBag.YardimTurleri = yardimturleri;
 
             List<SelectListItem> iller = db.Iller.Select(p => new SelectListItem
             {
-                Text = p.IlAdi,
+                Text = p.IlAdi.ToString(),
                 Value = p.Id.ToString()
             }).ToList();
             ViewBag.Iller = iller;
@@ -175,6 +176,7 @@ namespace SYP.Controllers
                     Okunma = 0
                 };
                 //yenimuhtac.AdminOnay = false; gerek var mı?
+                TempData["eklendi"] = "İhtiyaç Sahibi Eklendi";
                 db.Muhtaclar.Add(yenimuhtac);
                 db.SaveChanges();
 
@@ -197,7 +199,7 @@ namespace SYP.Controllers
             }).ToList();
             ViewBag.Iller = iller;
 
-            TempData["eklendi"] = "İhtiyaç Sahibi Eklendi";
+            
             return View(muhtac);
         }
 
@@ -209,7 +211,12 @@ namespace SYP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Muhtac muhtac = db.Muhtaclar.Find(id);
+            Muhtac muhtac = db.Muhtaclar
+                .Include(i => i.Adres)
+                .Include(i => i.YardimTuru)
+                .Include(i => i.Il)
+                .FirstOrDefault(i => i.Id == id);
+            //Muhtac muhtac = db.Muhtaclar.Find(id);
             if (muhtac == null)
             {
                 return HttpNotFound();
@@ -256,7 +263,7 @@ namespace SYP.Controllers
                     entity.YardimYapildimi = muhtac.YardimYapildimi;
                     db.SaveChanges();
                     TempData["Duzenlendi"] = entity;
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Giris");
                 }
             }
 
@@ -286,7 +293,7 @@ namespace SYP.Controllers
             Muhtac muhtac = db.Muhtaclar.Find(id);
             db.Muhtaclar.Remove(muhtac);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Giris");
         }
 
 

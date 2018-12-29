@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SYP.Models.Portal>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-3" style="border:3px;">
+        @Html.Partial("AramaPartial")
+        @Html.Action("bagisSayilari", "Home")
+    </div>
+    <div class="col-md-9">
+
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-warning">
+                <h3> Kayıt Bulunamadı...</h3>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-12">
+
+                <h1 class="my-4">
+                    Güncel Yardım Destek Haberleri
+                    <small></small>
+                </h1>
+                <hr />
+                @foreach (var item in Model)
+                {
+                    <!-- Blog Post -->
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="~/bitirmeresim/img350x175.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h2 class="card-title">@item.Baslik</h2>
+                            <p class="card-text">@item.Icerik.Substring(0,200)</p>
+                            @Html.ActionLink("Detay","Details",new { id=item.Id},new {@class="btn btn-secondary" })
+                        </div>
+                        <div class="card-footer text-muted">
+                            @item.EklenmeTarihi
+                        </div>
+                    </div>
+                }
+
+            </div>
+        }
+
+    </div>
+
+</div>
+

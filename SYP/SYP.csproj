@@ -164,6 +164,7 @@
     <Compile Include="Controllers\GirisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MuhtacController.cs" />
+    <Compile Include="Controllers\PortalController.cs" />
     <Compile Include="Filtreler\GirisKontrolFiltresi.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -172,7 +173,6 @@
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\DataInitializer.cs" />
     <Compile Include="Models\Il.cs" />
-    <Compile Include="Models\Kategori.cs" />
     <Compile Include="Models\Kullanici.cs" />
     <Compile Include="Models\Muhtac.cs" />
     <Compile Include="Models\Portal.cs" />
@@ -216,6 +216,12 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Muhtac\_YorumList.cshtml" />
+    <Content Include="Views\Portal\Create.cshtml" />
+    <Content Include="Views\Portal\Delete.cshtml" />
+    <Content Include="Views\Portal\Details.cshtml" />
+    <Content Include="Views\Portal\Edit.cshtml" />
+    <Content Include="Views\Portal\Index.cshtml" />
+    <Content Include="Views\Portal\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

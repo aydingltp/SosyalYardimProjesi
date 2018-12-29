@@ -10,8 +10,17 @@
 @if (TempData["Duzenlendi"] != null)
 {
     var muhtac = (SYP.Models.Muhtac)TempData["Duzenlendi"];
-    <div class="alert alert-success" role="alert" >
+    <div class="alert alert-success" role="alert">
         <strong> <span class="glyphicon glyphicon-ok"></span> @muhtac.Baslik </strong> düzenlendi.
+    </div>
+}
+
+@if (TempData["eklendi"] != null)
+{
+    <div class="col-md-12">
+        <div class="alert alert-success">
+            @TempData["eklendi"].ToString()
+        </div>
     </div>
 }
 <table class="table table-bordered table-hover table-striped">
@@ -54,7 +63,7 @@
                 @Html.DisplayFor(modelItem => item.Aciliyet)
             </td>
             <td>
-                @Html.ActionLink("Düzenle","Edit", "Muhtac", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
+                @Html.ActionLink("Düzenle", "Edit", "Muhtac", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
                 @Html.ActionLink("Detay", "Details", "Muhtac", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" }) |
                 @Html.ActionLink("Sil", "Delete", "Muhtac", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
             </td>

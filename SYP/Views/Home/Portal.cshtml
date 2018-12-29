@@ -1,3 +1,39 @@
-﻿@model SYP.Models.Portal
+﻿@model IEnumerable<SYP.Models.Portal> 
 
-<h1> Portal</h1>
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <h1 class="my-4">
+                Güncel Yardım Destek Haberleri
+                <small>Secondary Text</small>
+            </h1>
+            <hr />
+            @foreach (var item in Model)
+            {
+                <!-- Blog Post -->
+                <div class="card mb-4">
+                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <div class="card-body">
+                        <h2 class="card-title">@item.Baslik</h2>
+                        <p class="card-text">@item.Icerik</p>
+                        <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted on January 1, 2017 by
+                        <a href="#">Start Bootstrap</a>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->

@@ -16,6 +16,10 @@
     <div class="col-md-3" style="">
         @Html.Partial("AramaPartial")
         @Html.Action("bagisSayilari", "Home")
+        @if (Convert.ToBoolean(Session["yetki"]) == true)
+        {
+            <a href="/Portal/List" style="text-align:center; margin-top:20px   " class="list-group-item list-group-item-action list-group-item-success"><strong>Portal Paneli</strong></a>
+        }
     </div>
     <div class="col-md-9">
         <div class="row imgler">

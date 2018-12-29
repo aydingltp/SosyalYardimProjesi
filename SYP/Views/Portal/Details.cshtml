@@ -1,0 +1,23 @@
+﻿@model SYP.Models.Portal
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>@Model.Baslik</h1>
+<hr />
+
+<p>
+    <span class="glyphicon glyphicon-time"></span>
+    @Model.EklenmeTarihi
+</p>
+<hr />
+<img class="img-responsive" src="~/bitirmeresim/img350x175.png" />
+<hr />
+
+<p>
+    @Model.Icerik
+</p>
+

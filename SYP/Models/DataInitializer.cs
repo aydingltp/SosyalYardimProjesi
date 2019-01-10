@@ -36,9 +36,9 @@ namespace SYP.Models
             context.SaveChanges();
             List<Kullanici> kullanici = new List<Kullanici>()
             {
-                new Kullanici(){Isim="Aydın",Soyisim="Gültepe",Tel="5541407046",Eposta="aydngltp@gmail.com",Sifre="aa",SifreConfirm="aa",Adminmi=true},
-                new Kullanici(){Isim="kullanici1",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a1",SifreConfirm="a1",Adminmi=false},
-                new Kullanici(){Isim="kullanici2",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a2",SifreConfirm="a2",Adminmi=false}
+                new Kullanici(){KullaniciAdi="admin", Isim="Aydın",Soyisim="Gültepe",Tel="5541407046",Eposta="aydngltp@gmail.com",Sifre="aa",SifreConfirm="aa",Adminmi=true},
+                new Kullanici(){KullaniciAdi="kullanici1",Isim="Ahmet",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a1",SifreConfirm="a1",Adminmi=false},
+                new Kullanici(){KullaniciAdi="kullanici2",Isim="Yusuf",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a2",SifreConfirm="a2",Adminmi=false}
             };
             foreach (var item in kullanici)
             {

@@ -44,8 +44,10 @@ namespace SYP.Controllers
                 if (login != null)
                 {
                     Session["uyeid"] = login.Id;
-                    Session["kullaniciadi"] = login.Isim;
+                    Session["isim"] = login.Isim;
+                    Session["kullaniciadi"] = login.KullaniciAdi;
                     Session["yetki"] = login.Adminmi;
+                    Session["okundu"] = false;
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -72,11 +74,20 @@ namespace SYP.Controllers
         [HttpPost]
         public ActionResult Kayit(Kullanici kullanici)
         {
+            var kullanicivarmi = db.Kullanicilar.Where(i => i.Tel == kullanici.Tel).FirstOrDefault();
             if (ModelState.IsValid)
             {
-                db.Kullanicilar.Add(kullanici);
-                db.SaveChanges();
-                return RedirectToAction("Login");
+                if ( kullanicivarmi == null)
+                {
+                    db.Kullanicilar.Add(kullanici);
+                    db.SaveChanges();
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    ViewBag.Hata = "Bu telefona sahip kullanıcı zaten var!";
+                }
+                
             }
             return View(kullanici);
         }

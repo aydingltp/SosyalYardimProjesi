@@ -13,6 +13,9 @@ namespace SYP.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Kullanıcı Adı")]
+        public string KullaniciAdi { get; set; }
+        [Required]
         [Display(Name = "İsim")]
         public string Isim { get; set; }
 

@@ -72,8 +72,12 @@ namespace SYP.Controllers
 
         public ActionResult OkunmaArttir(int muhtacid)
         {
-            var muhtac = db.Muhtaclar.Where(m => m.Id == muhtacid).SingleOrDefault();
-            muhtac.Okunma += 1;
+            if (Convert.ToBoolean(Session["okundu"]) == false)
+            {
+                var muhtac = db.Muhtaclar.Where(m => m.Id == muhtacid).SingleOrDefault();
+                muhtac.Okunma += 1;
+                Session["okundu"] = true;
+            }
             db.SaveChanges();
             return View();
         }

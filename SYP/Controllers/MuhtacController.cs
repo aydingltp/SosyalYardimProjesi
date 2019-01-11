@@ -117,16 +117,11 @@ namespace SYP.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var muhtac = db.Muhtaclar.Include(i => i.Il).Include(i => i.Adres).Include(i => i.YardimTuru).Where(i => i.Id == id).FirstOrDefault();
-            //Muhtac muhtac = db.Muhtaclar.Include(b => b.Adres).Include(b=>b.Il).FirstOrDefault(b => b.Id == id);
-            //Find metodu çalışmadı onun yerine firstofdefault kullanıldı.
 
             if (muhtac == null)
             {
                 return HttpNotFound();
             }
-            //var yardimturu = muhtac.YardimTuru.ToString(); +++
-            //ViewBag.KategoriAdi = blog.CategoryId;
-            //ViewBag.Yardimturu = yardimturu;++++
             return View(muhtac);
 
         }
@@ -179,7 +174,6 @@ namespace SYP.Controllers
                     Il = db.Iller.FirstOrDefault(p => p.Id == muhtac.Il.Id),
                     Okunma = 0
                 };
-                //yenimuhtac.AdminOnay = false; gerek var mı?
                 TempData["eklendi"] = "İhtiyaç Sahibi Eklendi";
                 db.Muhtaclar.Add(yenimuhtac);
                 db.SaveChanges();

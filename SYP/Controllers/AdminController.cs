@@ -78,5 +78,12 @@ namespace SYP.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Kullanicilar()
+        {
+            var kullanicilar = db.Kullanicilar.Where(i=>i.Adminmi==false).ToList();
+            return View(kullanicilar);
+        }
+
     }
 }

@@ -23,6 +23,7 @@
         </div>
     </div>
 }
+
 <table class="table table-bordered table-hover table-striped">
     <tr>
         <th>
@@ -46,23 +47,23 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td width="15%">
                 @Html.DisplayFor(modelItem => item.Baslik)
             </td>
-            <td>
+            <td width="15%">
                 @Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)
             </td>
-            <td>
+            <td width="30%">
                 @Html.DisplayFor(modelItem => item.Aciklama)
             </td>
-            <td>
+            <td width="15%">
                 @Html.DisplayFor(modelItem => item.Il.IlAdi) /
                 @Html.DisplayFor(modelItem => item.Adres.Ilce)
             </td>
-            <td>
+            <td width="5%">
                 @Html.DisplayFor(modelItem => item.Aciliyet)
             </td>
-            <td>
+            <td width="20%">
                 @Html.ActionLink("Düzenle", "Edit", "Muhtac", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
                 @Html.ActionLink("Detay", "Details", "Muhtac", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" }) |
                 @Html.ActionLink("Sil", "Delete", "Muhtac", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
@@ -71,7 +72,12 @@
     }
 
 </table>
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-danger">
+        Eklediğiniz İhtiyaç Sahibi Yok...
+    </div>
+}
 <p>
     @Html.ActionLink("İhtiyaç Sahibi Ekle", "Create", "Muhtac", new { area = "" }, new { @class = "btn btn-success btn-xs" })
-    @*@Html.ActionLink("Create New","/Home/Ekle","",new {@class="btn btn-success"})*@
 </p>

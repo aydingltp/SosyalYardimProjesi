@@ -6,7 +6,7 @@
 }
 
 <h2>Eklediğiniz İhtiyaç Sahipleri</h2>
-
+<hr />
 @if (TempData["Duzenlendi"] != null)
 {
     var muhtac = (SYP.Models.Muhtac)TempData["Duzenlendi"];
@@ -33,9 +33,6 @@
             @Html.DisplayNameFor(model => model.MuhtacAdiSoyadi)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Aciklama)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Adres)
         </th>
         <th>
@@ -47,16 +44,13 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td width="15%">
+            <td width="25%">
                 @Html.DisplayFor(modelItem => item.Baslik)
             </td>
-            <td width="15%">
+            <td width="25%">
                 @Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)
             </td>
-            <td width="30%">
-                @Html.DisplayFor(modelItem => item.Aciklama)
-            </td>
-            <td width="15%">
+            <td width="25%">
                 @Html.DisplayFor(modelItem => item.Il.IlAdi) /
                 @Html.DisplayFor(modelItem => item.Adres.Ilce)
             </td>

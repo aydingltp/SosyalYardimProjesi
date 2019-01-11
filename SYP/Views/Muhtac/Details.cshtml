@@ -56,7 +56,7 @@
             </p>
         </div>
         <div class="col">
-            <span class="alert alert-success"> <strong>@Model.Okunma.ToString()</strong> defa görüntülendi. </span>
+            <span class="alert alert-success"> <strong>@Model.Okunma.ToString()</strong> <font face="Comic sans MS" size=" 2"> defa görüntülendi.</font> </span>
         </div>
     </div>
 
@@ -98,7 +98,6 @@
                 data: { yorum:yorumunuz, muhtacid:@Model.Id },
                 type: 'POST',
                 dataType: 'json',
-                //success: function (data) { alert("Yorum Gönderildi" + yorumunuz); }
             });
         });
     })

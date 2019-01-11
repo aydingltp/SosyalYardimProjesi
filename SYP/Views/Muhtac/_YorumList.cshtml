@@ -3,18 +3,19 @@
 <div class="card" style="width:100%; margin-top:20px; margin-bottom:20px; border:solid 2px rgba(184, 181, 181, 0.85)">
     <div class="alert alert-primary"><strong>Yapılan Yorumlar</strong>  </div>
 
-    <table class="table table-bordered  ">
+    <table class="table table-bordered">
         @foreach (var item in Model)
         {
             <tr>
-                <td width="10%">
-                    @Html.DisplayFor(modelItem => item.Kullanici.Isim)
+                <td width="15%">
+                    <i class="fa fa-user"></i>  <font face="Comic sans MS" size=" 3">@item.Kullanici.KullaniciAdi</font>
                 </td>
-                <td width="65%">
+                <td width="60%">
                     @Html.DisplayFor(modelItem => item.YorumIcerik)
                 </td>
                 <td width="20%">
-                    @Html.DisplayFor(modelItem => item.YorumTarihi)
+                    <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.YorumTarihi)</font>
+                    
                 </td>
                 <td width="15%">
                     @if (Convert.ToInt32(Session["uyeid"]) == item.KullaniciId)

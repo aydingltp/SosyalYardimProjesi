@@ -10,6 +10,7 @@ namespace SYP.Models.viewModel
     {
         [Required(ErrorMessage ="Cep Telefonu Giriniz.")]
         [Phone]
+        [Display(Name ="Cep Telefonu")]
         public String Tel { get; set; }
 
         

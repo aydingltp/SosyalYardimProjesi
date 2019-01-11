@@ -71,17 +71,20 @@
             {
 
                 <tr>
-                    <td>
+                    <td width="20%">
                         @Html.DisplayFor(modelItem => item.Baslik)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Aciklama)
+                    <td width="50%">
+                        <small>  @Html.DisplayFor(modelItem => item.Aciklama)</small>
+                      
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Il.IlAdi) /
-                        @Html.DisplayFor(modelItem => item.Adres.Ilce)
+                    <td width="15%">
+                        <small>
+                            @Html.DisplayFor(modelItem => item.Il.IlAdi) /
+                            @Html.DisplayFor(modelItem => item.Adres.Ilce)
+                        </small>
                     </td>
-                    <td>
+                    <td width="7%">
                         @if (item.Aciliyet == 5 || item.Aciliyet == 4)
                         {
                             <span class="badge badge-danger"> @Html.DisplayFor(modelItem => item.Aciliyet)</span>
@@ -92,7 +95,7 @@
                         }
 
                     </td>
-                    <td>
+                    <td width="8%">
                         @Html.ActionLink("Detay", "Details", "Muhtac", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
                     </td>
                 </tr>

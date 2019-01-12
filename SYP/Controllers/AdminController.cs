@@ -6,6 +6,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Web.Mvc;
 using SYP.Models.viewModel;
+using SYP.Filtreler;
 
 namespace SYP.Controllers
 {
@@ -13,6 +14,8 @@ namespace SYP.Controllers
     {
         private DataContext db = new DataContext();
         // GET: Admin
+
+        [GirisKontrolFiltresi]
         public ActionResult Index(int? id, string q)
         {
             var muhtaclar = db.Muhtaclar
@@ -79,11 +82,35 @@ namespace SYP.Controllers
             return RedirectToAction("Index");
         }
 
+        [GirisKontrolFiltresi]
         public ActionResult Kullanicilar()
         {
             var kullanicilar = db.Kullanicilar.Where(i=>i.Adminmi==false).ToList();
             return View(kullanicilar);
         }
+
+        [GirisKontrolFiltresi]
+        public ActionResult Yardimlar()
+        {
+            var yardimlar = db.Yardimlar.ToList();
+            return View(yardimlar);
+        }
+         public ActionResult YardimOnayi(int id)
+        {
+            var yardimdetay = db.Yardimlar.Where(i => i.Id == id).FirstOrDefault();
+            if (yardimdetay.Onay == false)
+            {
+                yardimdetay.Onay = true;
+                db.SaveChanges();
+            }
+            else
+            {
+                yardimdetay.Onay = false;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Yardimlar");
+        }
+
 
     }
 }

@@ -46,6 +46,10 @@
         <tr>
             <td width="25%">
                 @Html.DisplayFor(modelItem => item.Baslik)
+                @if (item.YardimYapildimi == true)
+                {
+                    <span class="badge badge-success" style="position:relative;">Yardım Yapıldı.</span>
+                }
             </td>
             <td width="25%">
                 @Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)

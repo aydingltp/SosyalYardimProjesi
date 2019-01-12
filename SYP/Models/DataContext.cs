@@ -18,6 +18,7 @@ namespace SYP.Models
         public DbSet<Adres> Adresler { get; set; }
         public DbSet<Portal> Portallar { get; set; }
         public DbSet<Yorum> Yorumlar { get; set; }
+        public DbSet<YardimDetay> Yardimlar { get; set; }
         public DbSet<YardimTuru> YardimTurler { get; set; }
         public DbSet<Kullanici> Kullanicilar { get; set; }
 

@@ -39,23 +39,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 form-group">
-            <strong>Onay Durumu: </strong> @Html.DisplayFor(model => model.AdminOnay)
-        </div>
-        <div class="col-md-6 form-group">
-            <strong>Yardım Yapıldı mı? : </strong>  @Html.DisplayFor(model => model.YardimYapildimi)
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col">
-            <p>
-                @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Geri", "Index", null, new { @class = "btn btn-light" })
-            </p>
-        </div>
-        <div class="col">
+        <div class="col-md-12 form-group">
             <span class="alert alert-success"> <strong>@Model.Okunma.ToString()</strong> <font face="Comic sans MS" size=" 2"> defa görüntülendi.</font> </span>
         </div>
     </div>
@@ -63,25 +47,93 @@
 
 </div>
 <div class="container" style="width:900px; margin-top:30px">
+    <div class="row">
+
+        <div class="card" style="width:100%; margin-top:20px; margin-bottom:20px; border:solid 2px rgba(184, 181, 181, 0.85)">
+            <div class="alert alert-warning" style="text-align:center"><strong>YAPILAN YARDIMLAR</strong>  </div>
+
+            <table class="table table-bordered">
+                @foreach (var item in Model.Yardimlar)
+                {
+                    <tr>
+                        <td width="15%">
+                            <i class="fa fa-user"></i>  <font face="Comic sans MS" size=" 3">@item.Kullanici.KullaniciAdi</font>
+                        </td>
+                        <td width="67%">
+                            <small> @Html.DisplayFor(modelItem => item.YapilanYardim)</small>
+                            @if (item.Onay == false)
+                            {
+                                <span class="badge badge-danger" style="position:absolute; right:180px;">Onay Bekliyor</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-success" style="position:absolute; right:180px;">Onaylı</span>
+                            }
+                        </td>
+                        <td width="18%">
+                            <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.Tarih)</font>
+
+                        </td>
+
+                    </tr>
+
+                }
+
+            </table>
+            @*@if (TempData["Yorumeklendi"] != null)
+                {
+                    <div class="alert alert-success">@TempData["Yorumeklendi"]</div>
+                }
+                @if (TempData["Yorumid"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["Yorumid"]</div>
+                }
+                @if (TempData["Yorumsil"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["Yorumsil"]</div>
+                }
+                @if (Model.Count() == 0)
+                {
+                    <div class="alert alert-danger">Henüz yorum yok.</div>
+                }*@
+
+            @if (Session["uyeid"] != null)
+            {
+
+                <div class="card" style="width:100%; padding:20px;">
+                    <form role="form" class="form-inline">
+                        <div class="form-group row">
+                            <textarea style="width:1000px" class="form-control col-sm-8 " id="yardim" typeof="text" rows="1"></textarea>
+                            <div class="col-sm-4">
+                                <button type="submit" id="yardimgonder" class="btn btn-warning">Yardım Yap</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            }
+        </div>
+
+
+    </div>
+</div>
+<div class="container" style="width:900px; margin-top:30px">
 
     <div class="row">
         @Html.Action("YorumList", new { id = Model.Id })
     </div>
-    @if (Session["uyeid"] != null)
-    {
-        <div class="row" style="margin-bottom:20px;">
-            <div class="card" style="width:100%; padding:20px;">
-                <form role="form">
-                    <div class="form-group">
-                        <textarea class="form-control" id="yorum" typeof="text" rows="1"></textarea>
-                    </div>
-                    <button type="submit" id="gonder" class="btn btn-primary">Yorum Yap</button>
-                </form>
-            </div>
-        </div>
-    }
 
 </div>
+
+<div class="container" style="width:900px; margin-top:30px">
+
+
+
+</div>
+
+
+
 
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
@@ -89,6 +141,19 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#yardimgonder").click(function () {
+            var yardiminiz = $("#yardim").val();
+            $.ajax({
+                url: '/Muhtac/YardimYap',
+                data: { yardim: yardiminiz, muhtacid:@Model.Id },
+                type: 'POST',
+                dataType: 'json',
+            });
+        });
+    })
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("#gonder").click(function () {
@@ -119,6 +184,7 @@
         border-color: #808080;
         border-radius: 10px;
         width: 900px;
+        padding-bottom:30px;
     }
 </style>
 

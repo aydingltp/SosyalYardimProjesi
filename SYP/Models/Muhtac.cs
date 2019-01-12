@@ -28,8 +28,6 @@ namespace SYP.Models
         [Display(Name = "İl")]
         public Il Il { get; set; }  //foreign key
         public Adres Adres { get; set; }  //foreign key
-        public decimal Lat { get; set; }
-        public decimal Lng { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? EklenmeTarihi { get; set; }
@@ -44,10 +42,12 @@ namespace SYP.Models
         public int? Okunma { get; set; }
 
         public Kullanici Kullanici { get; set; }
+        public virtual ICollection<YardimDetay> Yardimlar { get; set; }
+
 
         //public List<Yorum> Yorum { get; set; }
 
-        
+
 
     }
 }

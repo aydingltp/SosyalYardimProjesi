@@ -1,55 +1,55 @@
-﻿@model IEnumerable<SYP.Models.Yorum>
+﻿@model SYP.Models.Muhtac
 
 <div class="card" style="width:100%; margin-top:20px; margin-bottom:20px; border:solid 2px rgba(184, 181, 181, 0.85)">
-    <div class="alert alert-primary" style="text-align:center"><strong>YORUMLAR</strong>  </div>
+    <div class="alert alert-primary"><strong>Yapılan Yardımlar</strong>  </div>
 
     <table class="table table-bordered">
-        @foreach (var item in Model)
+        @foreach (var item in Model.Yardimlar)
         {
             <tr>
                 <td width="15%">
                     <i class="fa fa-user"></i>  <font face="Comic sans MS" size=" 3">@item.Kullanici.KullaniciAdi</font>
                 </td>
                 <td width="60%">
-                    @Html.DisplayFor(modelItem => item.YorumIcerik)
+                    @Html.DisplayFor(modelItem => item.YapilanYardim)
                 </td>
                 <td width="20%">
-                    <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.YorumTarihi)</font>
+                    <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.Tarih)</font>
 
                 </td>
                 <td width="15%">
-                    @if (Convert.ToInt32(Session["uyeid"]) == item.KullaniciId)
+                    @*@if (Convert.ToInt32(Session["uyeid"]) == item.KullaniciId)
                     {
                         @Html.ActionLink("Sil", "YorumSil", new { yorumid = item.Id, muhtacId = item.MuhtacId }, new { @class = "btn btn-danger" })
-                    }
+                    }*@
                 </td>
             </tr>
 
         }
 
     </table>
-    @if (TempData["Yorumeklendi"] != null)
-    {
-        <div class="alert alert-success">@TempData["Yorumeklendi"]</div>
-    }
-    @if (TempData["Yorumsecmehata"] != null)
-    {
-        <div class="alert alert-danger">@TempData["Yorumsecmehata"]</div>
-    }
-    @if (TempData["Yorumsil"] != null)
-    {
-        <div class="alert alert-danger">@TempData["Yorumsil"]</div>
-    }
-    @if (Model.Count() == 0)
-    {
-        <div class="alert alert-light"> Henüz yorum yok!</div>
-    }
+    @*@if (TempData["Yorumeklendi"] != null)
+        {
+            <div class="alert alert-success">@TempData["Yorumeklendi"]</div>
+        }
+        @if (TempData["Yorumid"] != null)
+        {
+            <div class="alert alert-danger">@TempData["Yorumid"]</div>
+        }
+        @if (TempData["Yorumsil"] != null)
+        {
+            <div class="alert alert-danger">@TempData["Yorumsil"]</div>
+        }
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-danger">Henüz yorum yok.</div>
+        }
 
 
 
 
-    @if (Session["uyeid"] != null)
-    {
+        @if (Session["uyeid"] != null)
+        {
             <div style="width:100%; padding:20px;">
                 <form role="form">
                     <div class="form-group">
@@ -58,8 +58,9 @@
                     <button type="submit" id="gonder" class="btn btn-primary">Yorum Yap</button>
                 </form>
             </div>
-  
-    }
+
+        }*@
 </div>
+
 
 

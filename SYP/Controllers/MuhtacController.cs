@@ -21,6 +21,22 @@ namespace SYP.Controllers
         {
             return View(db.Muhtaclar.ToList());
         }
+        public JsonResult YardimYap(string yardim, int? muhtacid)
+        {
+            var kullaniciid = Session["uyeid"];
+            if (yardim != null)
+            {
+                db.Yardimlar.Add(new YardimDetay() { KullaniciId = Convert.ToInt32(kullaniciid), MuhtacId = Convert.ToInt32(muhtacid), YapilanYardim = yardim, Tarih = DateTime.Now });
+                TempData["Yardimeklendi"] = "Yardımınız; ekibimiz tarafından onaylandıktan sonra kaydedilecektir.";
+                db.SaveChanges();
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+        public PartialViewResult YardimList(int? id)
+        {
+            var yardimlist = db.Yardimlar.Where(i => i.MuhtacId == id).ToList();
+            return PartialView("_YorumList", yardimlist);
+        }
 
         public JsonResult YorumYap(string yorum, int? muhtacid)
         {
@@ -55,7 +71,7 @@ namespace SYP.Controllers
             }
             else
             {
-                TempData["Yorumid"] = "yorum seçiniz";
+                TempData["Yorumsecmehata"] = "yorum seçiniz";
                 return RedirectToAction("Details", "Muhtac", new { id = muhtac.Id });
             }
         }
@@ -64,10 +80,6 @@ namespace SYP.Controllers
         {
             var yorumlist = db.Yorumlar.Where(i => i.MuhtacId == id).ToList();
             return PartialView("_YorumList", yorumlist);
-        }
-        public ActionResult Onay(int? id)
-        {
-            return View(db.Muhtaclar.ToList());
         }
 
         public ActionResult OkunmaArttir(int muhtacid)
@@ -84,8 +96,11 @@ namespace SYP.Controllers
         [GirisKontrolFiltresi]
         public ActionResult List(int? id, string q)
         {
-            var muhtaclar = db.Muhtaclar.Include(i => i.Adres).Include(i => i.Il).Where(i => i.AdminOnay == true).AsQueryable();
-
+            var muhtaclar = db.Muhtaclar
+                        .Include(i => i.Adres).Include(i => i.Il)
+                        .Where(i => i.AdminOnay == true)
+                        .Where(i=>i.YardimYapildimi==false).AsQueryable();
+            Session["okundu"] = false;
             if (id != null)
             {
                 if (id == 6)
@@ -106,7 +121,7 @@ namespace SYP.Controllers
         }
 
 
-
+        [GirisKontrolFiltresi]
         [HttpGet]
         //[Route("Home/Detay/{id}")]
         // GET: Muhtac/Details/5
@@ -201,8 +216,10 @@ namespace SYP.Controllers
             return View(muhtac);
         }
 
+
         // GET: Muhtac/Edit/5
         //[Route("Giris/Edit/{id}")]
+        [GirisKontrolFiltresi]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -238,12 +255,10 @@ namespace SYP.Controllers
             return View(muhtac);
         }
 
-        // POST: Muhtac/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+    
         [HttpPost]
-        //[Route("Giris/Edit/{id}")]
         [ValidateAntiForgeryToken]
+        [GirisKontrolFiltresi]
         public ActionResult Edit(Muhtac muhtac)
         {
             if (ModelState.IsValid)

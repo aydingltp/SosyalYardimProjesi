@@ -171,6 +171,7 @@
     <Compile Include="Models\viewModel\loginModel.cs" />
     <Compile Include="Models\viewModel\muhtacVeOnayModel.cs" />
     <Compile Include="Models\viewModel\onayCheckModel.cs" />
+    <Compile Include="Models\YardimDetay.cs" />
     <Compile Include="Models\YardimTuru.cs" />
     <Compile Include="Models\Yorum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,6 +206,8 @@
     <Content Include="Views\Portal\List.cshtml" />
     <Content Include="Scripts\README.md" />
     <Content Include="Views\Admin\Kullanicilar.cshtml" />
+    <Content Include="Views\Muhtac\_YardimList.cshtml" />
+    <Content Include="Views\Admin\Yardimlar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

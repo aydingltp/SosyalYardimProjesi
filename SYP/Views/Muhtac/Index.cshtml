@@ -5,11 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index ve Muhtacın profili burada olsun </h2>
+<h2>Güncel İhtiyaç Sahiplerinin Listesi </h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -22,61 +19,31 @@
             @Html.DisplayNameFor(model => model.Aciklama)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Lat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lng)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EklenmeTarihi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aciliyet)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.YardimYapildimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AdminOnay)
+            Tarih
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
-        <td>
+        <td width="20%">
             @Html.DisplayFor(modelItem => item.Baslik)
         </td>
-        <td>
+        <td width="15%">
             @Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Aciklama)
+        <td width="30%">
+            <small>@Html.DisplayFor(modelItem => item.Aciklama)</small>
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lat)
+        <td width="10%">
+            <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.EklenmeTarihi)</font>
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lng)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EklenmeTarihi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Aciliyet)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YardimYapildimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdminOnay)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        <td width="25%">
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })  |
+            @Html.ActionLink("Detay", "Details", new { id = item.Id }, new { @class = "btn btn-success btn-sm"})  |
+            @Html.ActionLink("Arşivle", "Arsivle","Muhtac", new { id=item.Id }, new { @class = "btn btn-dark btn-sm" })
         </td>
     </tr>
 }
-
 </table>

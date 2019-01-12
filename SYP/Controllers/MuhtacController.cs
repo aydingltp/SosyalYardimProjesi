@@ -19,7 +19,22 @@ namespace SYP.Controllers
         // GET: Muhtac
         public ActionResult Index()
         {
-            return View(db.Muhtaclar.ToList());
+            var muhtaclar = db.Muhtaclar.Where(i => i.Arsivmi == false).ToList();
+            return View(muhtaclar);
+        }
+        public ActionResult Arsivle(int id)
+        {
+            var muhtac = db.Muhtaclar.Where(i => i.Id == id).FirstOrDefault();
+            if (muhtac.Arsivmi==false)
+            {
+                muhtac.Arsivmi = true;
+            }
+            else
+            {
+                muhtac.Arsivmi = false;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index","Muhtac");
         }
         public JsonResult YardimYap(string yardim, int? muhtacid)
         {
@@ -99,6 +114,7 @@ namespace SYP.Controllers
             var muhtaclar = db.Muhtaclar
                         .Include(i => i.Adres).Include(i => i.Il)
                         .Where(i => i.AdminOnay == true)
+                        .Where(i => i.Arsivmi == false)
                         .Where(i=>i.YardimYapildimi==false).AsQueryable();
             Session["okundu"] = false;
             if (id != null)

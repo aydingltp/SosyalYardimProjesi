@@ -35,7 +35,8 @@
                         <img class="card-img-top" src="~/bitirmeresim/img350x175.png" alt="Card image cap">
                         <div class="card-body">
                             <h2 class="card-title">@item.Baslik</h2>
-                            <p class="card-text">@item.Icerik.Substring(0,200)</p>
+                            <hr />
+                            <p class="card-text">@item.Icerik</p><hr /><br />
                             @Html.ActionLink("Detay","Details",new { id=item.Id},new {@class="btn btn-secondary" })
                         </div>
                         <div class="card-footer text-muted">

@@ -206,8 +206,8 @@
     <Content Include="Views\Portal\List.cshtml" />
     <Content Include="Scripts\README.md" />
     <Content Include="Views\Admin\Kullanicilar.cshtml" />
-    <Content Include="Views\Muhtac\_YardimList.cshtml" />
     <Content Include="Views\Admin\Yardimlar.cshtml" />
+    <Content Include="Views\Admin\Arsiv.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

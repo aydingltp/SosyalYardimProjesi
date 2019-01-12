@@ -33,7 +33,7 @@ namespace SYP.Controllers
 
             bagisSayilariPartialModel models = new bagisSayilariPartialModel()
             {
-                yapilacakyardim = yardimsayisi.Count(i => i.YardimYapildimi == false),
+                yapilacakyardim = yardimsayisi.Where(i=>i.Arsivmi==false).Count(i => i.YardimYapildimi == false),
                 yapilanyardim = yardimsayisi.Count(i => i.YardimYapildimi == true)
             };
 
@@ -42,7 +42,7 @@ namespace SYP.Controllers
         }
         public PartialViewResult bagisSayilari()
         {
-            var muhtaclar = db.Muhtaclar.Where(i => i.AdminOnay == true).Where(i=>i.YardimYapildimi==false);
+            var muhtaclar = db.Muhtaclar.Where(i => i.AdminOnay == true).Where(i=>i.YardimYapildimi==false).Where(i=>i.Arsivmi==false);
             bagisYapPartialModel models = new bagisYapPartialModel()
             {
                 Acil = muhtaclar.Count(p => p.Aciliyet == 5),

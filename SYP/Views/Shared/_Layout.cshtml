@@ -41,7 +41,7 @@
                                 <a href="/Giris/Index" style="color:aliceblue">
                                     <i class="fa fa-user">&ensp;</i>
                                     <font face="Comic sans MS" size=" 3">@Session["kullaniciadi"].ToString()</font>
-                                    
+
                                 </a>
                             </li>
 
@@ -53,8 +53,21 @@
                             </li>
                             @if (Convert.ToBoolean(Session["yetki"]) == true)
                             {
-                                <li class="nav-item active" style="">
-                                    <a href="/Admin/Index" style="color:burlywood; padding-left:9px;"><strong>Admin Panel</strong></a>
+                                <li class="nav-item active">
+                                    <div class="btn-group" style="padding-left:20px">
+                                        <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Admin Panel
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item list-group-item-action list-group-item-success" href="/Admin/Index">1. Onay Ver</a>
+                                            <a class="dropdown-item list-group-item-action list-group-item-info" href="/Admin/Yardimlar">2. Yardım Kontrolü</a>
+                                            <a class="dropdown-item list-group-item-action list-group-item-warning" href="/Muhtac/Index">3. İhtiyaç Sahipleri</a>
+                                            <a class="dropdown-item list-group-item-action list-group-item-primary" href="/Admin/Kullanicilar">4. Kayıtlı Kullanıcılar</a>
+                                            <a class="dropdown-item list-group-item-action list-group-item-info" href="/Portal/List">5. Portal</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item list-group-item-action list-group-item-dark" href="/Admin/Arsiv">6. Arşiv</a>
+                                        </div>
+                                    </div>
                                 </li>
                             }
                         </ul>

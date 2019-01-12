@@ -38,6 +38,7 @@ namespace SYP.Models
         public int Aciliyet { get; set; }
         
         public bool YardimYapildimi { get; set; }
+        public bool Arsivmi { get; set; }
         public bool AdminOnay { get; set; }
         public int? Okunma { get; set; }
 

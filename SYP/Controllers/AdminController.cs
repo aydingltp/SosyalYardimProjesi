@@ -111,6 +111,12 @@ namespace SYP.Controllers
             return RedirectToAction("Yardimlar");
         }
 
+        public ActionResult Arsiv()
+        {
+            var arsivler = db.Muhtaclar.Where(i => i.Arsivmi == true).ToList();
+            return View(arsivler);
+        }
+
 
     }
 }

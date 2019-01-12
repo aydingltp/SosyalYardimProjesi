@@ -38,6 +38,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Aciliyet)
         </th>
+        <th>
+            Durum
+        </th>
         <th></th>
     </tr>
 
@@ -46,20 +49,26 @@
         <tr>
             <td width="25%">
                 @Html.DisplayFor(modelItem => item.Baslik)
-                @if (item.YardimYapildimi == true)
-                {
-                    <span class="badge badge-success" style="position:relative;">Yardım Yapıldı.</span>
-                }
             </td>
-            <td width="25%">
+            <td width="20%">
                 @Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)
             </td>
-            <td width="25%">
+            <td width="20%">
                 @Html.DisplayFor(modelItem => item.Il.IlAdi) /
                 @Html.DisplayFor(modelItem => item.Adres.Ilce)
             </td>
             <td width="5%">
                 @Html.DisplayFor(modelItem => item.Aciliyet)
+            </td>
+            <td width="10%">
+                @if (item.YardimYapildimi == true)
+                {
+                    <span class="badge badge-success" style="position:relative;">Yardım Yapıldı.</span>
+                }
+                @if (item.AdminOnay == false)
+                {
+                    <span class="badge badge-danger" style="position:relative;">Onay Bekliyor.</span>
+                }
             </td>
             <td width="20%">
                 @Html.ActionLink("Düzenle", "Edit", "Muhtac", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |

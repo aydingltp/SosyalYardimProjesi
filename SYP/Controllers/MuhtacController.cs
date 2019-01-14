@@ -18,7 +18,7 @@ namespace SYP.Controllers
         // GET: Muhtac
         public ActionResult Index()
         {
-            var muhtaclar = db.Muhtaclar.Where(i => i.Arsivmi == false).OrderBy(i => i.YardimYapildimi).ToList();
+            var muhtaclar = db.Muhtaclar.Where(i => i.Arsivmi == false).OrderBy(i => i.YardimYapildimi).OrderBy(i=>i.AdminOnay).ToList();
             return View(muhtaclar);
         }
         public ActionResult Arsivle(int id)
@@ -104,7 +104,7 @@ namespace SYP.Controllers
 
         public ActionResult OkunmaArttir(int muhtacid)
         {
-            if (Convert.ToBoolean(Session["okundu"]) == false)
+            if (Convert.ToBoolean(Session["okundu"]) == false && Convert.ToBoolean(Session["yetki"]) == false)
             {
                 var muhtac = db.Muhtaclar.Where(m => m.Id == muhtacid).SingleOrDefault();
                 muhtac.Okunma += 1;

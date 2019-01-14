@@ -92,7 +92,7 @@ namespace SYP.Controllers
         [GirisKontrolFiltresi]
         public ActionResult Yardimlar()
         {
-            var yardimlar = db.Yardimlar.ToList();
+            var yardimlar = db.Yardimlar.OrderBy(i=>i.Onay).ToList();
             return View(yardimlar);
         }
          public ActionResult YardimOnayi(int id)

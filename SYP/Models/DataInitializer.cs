@@ -37,8 +37,8 @@ namespace SYP.Models
             List<Kullanici> kullanici = new List<Kullanici>()
             {
                 new Kullanici(){KullaniciAdi="admin", Isim="Aydın",Soyisim="Gültepe",Tel="5541407046",Eposta="aydngltp@gmail.com",Sifre="aa",SifreConfirm="aa",Adminmi=true},
-                new Kullanici(){KullaniciAdi="kullanici1",Isim="Ahmet",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a1",SifreConfirm="a1",Adminmi=false},
-                new Kullanici(){KullaniciAdi="kullanici2",Isim="Yusuf",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a2",SifreConfirm="a2",Adminmi=false}
+                new Kullanici(){KullaniciAdi="ahmet34",Isim="Ahmet",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a1",SifreConfirm="a1",Adminmi=false},
+                new Kullanici(){KullaniciAdi="yusuf65",Isim="Yusuf",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a2",SifreConfirm="a2",Adminmi=false}
             };
             foreach (var item in kullanici)
             {
@@ -64,12 +64,12 @@ namespace SYP.Models
                 new Muhtac()
                 {
                     Baslik ="Okul",
-                    Aciklama ="Çocuklar için okuma kitabı gerekiyor.",
+                    Aciklama ="Süzen orta okulumuzdaki çocuklar için okuma kitabı gerekiyor.",
                     YardimTuru=context.YardimTurler.FirstOrDefault(i=>i.Id==1),
                     Aciliyet =1,
-                    Adres =new Adres{Ilce="ilce1",AdresDetay ="ataşehir mah. çankaya sk. no:12"},
+                    Adres =new Adres{Ilce="merkez",AdresDetay ="ataşehir mah. çankaya sk. no:12"},
                     Il=context.Iller.FirstOrDefault(p=>p.Id==1),
-                    MuhtacAdiSoyadi ="Muhtac1", AdminOnay=true,
+                    MuhtacAdiSoyadi ="Yusuf Ali", AdminOnay=true,
                     Kullanici =context.Kullanicilar.FirstOrDefault(p=>p.Id==2),
                     Okunma=0,
                     EklenmeTarihi=DateTime.Today
@@ -77,13 +77,13 @@ namespace SYP.Models
                 new Muhtac()
                 {
                     Baslik ="Acil Maddi Destek",
-                    Aciklama ="Maddi yardım gerekiyor.",
+                    Aciklama ="Faturalın ödenmesi için maddi yardım gerekiyor.",
                     YardimTuru=context.YardimTurler.FirstOrDefault(i=>i.Id==2),
                     Aciliyet =5,
-                    Adres =new Adres{Ilce="ilce2",
+                    Adres =new Adres{Ilce="Keşan",
                     AdresDetay ="süzen mah. elbas sk. no:22"},
                     Il=context.Iller.FirstOrDefault(p=>p.Id==22),
-                    MuhtacAdiSoyadi ="Muhtac2",
+                    MuhtacAdiSoyadi ="Yavuz Emre",
                     AdminOnay =true,
                     Kullanici =context.Kullanicilar.FirstOrDefault(p=>p.Id==3),
                     Okunma=0,
@@ -95,10 +95,10 @@ namespace SYP.Models
                     Aciklama ="Sağlık kontrolü için yardıma ihtiyacımız var.",
                     YardimTuru=context.YardimTurler.FirstOrDefault(i=>i.Id==3),
                     Aciliyet =5,
-                    Adres =new Adres{Ilce="ilce3",
+                    Adres =new Adres{Ilce="Simav",
                     AdresDetay ="sağlık mah. sanat sk. no:43"},
                     Il=context.Iller.FirstOrDefault(p=>p.Id==43),
-                    MuhtacAdiSoyadi ="Muhtac3",
+                    MuhtacAdiSoyadi ="Ali Kılıç",
                     AdminOnay =true,
                     Kullanici =context.Kullanicilar.FirstOrDefault(p=>p.Id==2),
                     Okunma=0,

@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Portal", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Portal Düzenle</h4>
         <hr />
@@ -26,7 +26,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Resim, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Resim, new { htmlAttributes = new { @class = "form-control" } })
+                <img width="300" src="@Model.Resim" alt="Alternate Text" />
+                @Html.ValidationMessageFor(model => model.Resim, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Resim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="Resim" id="Resim" value="" accept=".jpg,.png,.gif,.JPEG,.jpeg" class="form-control" />
                 @Html.ValidationMessageFor(model => model.Resim, "", new { @class = "text-danger" })
             </div>
         </div>

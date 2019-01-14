@@ -15,6 +15,7 @@ namespace SYP.Models
         [Display(Name = "Başlık")]
         public string Baslik { get; set; }
 
+        [StringLength(500)]
         public string  Resim { get; set; }
         [Required]
         [Display(Name = "İçerik Giriniz")]

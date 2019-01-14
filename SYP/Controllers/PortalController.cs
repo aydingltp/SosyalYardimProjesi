@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using SYP.Models;
 
@@ -50,10 +52,22 @@ namespace SYP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Portal portal)
+        public ActionResult Create(Portal portal, HttpPostedFileBase Resim)
         {
             if (ModelState.IsValid)
             {
+                if (Resim!=null)
+                {
+                    WebImage img = new WebImage(Resim.InputStream);
+                    FileInfo resiminfo = new FileInfo(Resim.FileName);
+
+                    string newresim = Guid.NewGuid().ToString() + resiminfo.Extension;
+                    img.Resize(800, 350);
+                    img.Save("~/Uploads/" + newresim);
+                    portal.Resim = "/Uploads/" + newresim;
+                }
+
+
                 portal.EklenmeTarihi = DateTime.Now;
                 db.Portallar.Add(portal);
                 db.SaveChanges();
@@ -82,11 +96,29 @@ namespace SYP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Portal portal)
+        public ActionResult Edit(Portal portal, HttpPostedFileBase Resim)
         {
+            var yeniportal = db.Portallar.Where(i => i.Id == portal.Id).FirstOrDefault();
             if (ModelState.IsValid)
             {
-                db.Entry(portal).State = EntityState.Modified;
+                if (Resim != null)
+                {
+                    if (System.IO.File.Exists(Server.MapPath(yeniportal.Resim)))
+                    {
+                        System.IO.File.Delete(Server.MapPath(yeniportal.Resim));
+                    }
+                    WebImage img = new WebImage(Resim.InputStream);
+                    FileInfo resiminfo = new FileInfo(Resim.FileName);
+
+                    string newresim = Guid.NewGuid().ToString() + resiminfo.Extension;
+                    img.Resize(800, 350);
+                    img.Save("~/Uploads/" + newresim);
+                    yeniportal.Resim = "/Uploads/" + newresim;
+                    yeniportal.Baslik = portal.Baslik;
+                    yeniportal.Icerik = portal.Icerik;
+                    db.SaveChanges();
+                }
+                db.Entry(yeniportal).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -111,12 +143,16 @@ namespace SYP.Controllers
         // POST: Portal/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, FormCollection collection)
         {
             Portal portal = db.Portallar.Find(id);
+            if (System.IO.File.Exists(Server.MapPath(portal.Resim)))
+            {
+                System.IO.File.Delete(Server.MapPath(portal.Resim));
+            }
             db.Portallar.Remove(portal);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
 

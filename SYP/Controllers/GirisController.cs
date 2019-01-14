@@ -24,8 +24,6 @@ namespace SYP.Controllers
             return View(muhtaclar.ToList());
         }
 
-        
-
         [HttpGet]
         public ActionResult Login()
         {
@@ -36,15 +34,12 @@ namespace SYP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(loginModel kullanici)
         {
-            //kullanici.Tel = "5541407046";
-            //kullanici.Sifre = "a0";
             if (ModelState.IsValid)
             {
                 var login = db.Kullanicilar.FirstOrDefault(p => p.Tel == kullanici.Tel && p.Sifre == kullanici.Sifre);
                 if (login != null)
                 {
                     Session["uyeid"] = login.Id;
-                    Session["isim"] = login.Isim;
                     Session["kullaniciadi"] = login.KullaniciAdi;
                     Session["yetki"] = login.Adminmi;
                     Session["okundu"] = false;
@@ -56,7 +51,6 @@ namespace SYP.Controllers
                 }
             }
             return View(kullanici);
-
         }
 
         public ActionResult Logout()

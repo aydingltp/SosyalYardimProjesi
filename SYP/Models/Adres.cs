@@ -18,8 +18,5 @@ namespace SYP.Models
         [Display(Name = "Adres Detayı")]
         public string AdresDetay { get; set; }
 
-        [Display(Name = "GoogleMaps Konumu")]
-        public string GoogleMaps { get; set; }
-
     }
 }

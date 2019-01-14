@@ -110,6 +110,17 @@ namespace SYP.Controllers
             }
             return RedirectToAction("Yardimlar");
         }
+        public ActionResult YardimOnayiSil(int id)
+        {
+            var yardimonay = db.Yardimlar.Where(i => i.Id == id).FirstOrDefault();
+            if (yardimonay!=null)
+            {
+                db.Yardimlar.Remove(yardimonay);
+                db.SaveChanges();
+                TempData["Yardimonaysilindi"] = "Yardım Onayı Silindi";
+            }
+            return RedirectToAction("Yardimlar");
+        }
 
         public ActionResult Arsiv()
         {

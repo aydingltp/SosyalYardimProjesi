@@ -32,7 +32,7 @@ namespace SYP.Filtreler
             else
             {
                 if(filterContext.ActionDescriptor.ControllerDescriptor.ControllerName=="Home"
-                    && filterContext.ActionDescriptor.ActionName== "IhtiyacSahibiEkle")
+                    && filterContext.ActionDescriptor.ActionName== "Create")
                 {
                     filterContext.Controller.TempData["hata"] = "Giriş yapmanız gerekmektedir.";
                 }
@@ -67,7 +67,7 @@ namespace SYP.Filtreler
             else
             {
                 if (filterContext.ActionDescriptor.ControllerDescriptor.ControllerName == "Home"
-                    && filterContext.ActionDescriptor.ActionName == "IhtiyacSahibiEkle")
+                    && filterContext.ActionDescriptor.ActionName == "Create")
                 {
                     filterContext.Controller.TempData["hata"] = "Giriş yapmanız gerekmektedir.";
                 }

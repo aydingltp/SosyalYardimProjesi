@@ -45,3 +45,23 @@
         </tr>
     }
 </table>
+@if (Model.Count() == 0)
+{
+    <div class="alert alert-danger"> Henüz kayıt yok!</div>
+}
+@if (TempData["arsivgeri"] != null)
+{
+    <div class="alert alert-success">Arşivden geri alındı.</div>
+}
+
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".alert-success").fadeOut(5000);
+    });
+</script>

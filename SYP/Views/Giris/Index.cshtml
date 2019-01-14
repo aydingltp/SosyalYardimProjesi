@@ -7,22 +7,7 @@
 
 <h2>Eklediğiniz İhtiyaç Sahipleri</h2>
 <hr />
-@if (TempData["Duzenlendi"] != null)
-{
-    var muhtac = (SYP.Models.Muhtac)TempData["Duzenlendi"];
-    <div class="alert alert-success" role="alert">
-        <strong> <span class="glyphicon glyphicon-ok"></span> @muhtac.Baslik </strong> düzenlendi.
-    </div>
-}
 
-@if (TempData["eklendi"] != null)
-{
-    <div class="col-md-12">
-        <div class="alert alert-success">
-            @TempData["eklendi"].ToString()
-        </div>
-    </div>
-}
 
 <table class="table table-bordered table-hover table-striped">
     <tr>
@@ -65,6 +50,10 @@
                 {
                     <span class="badge badge-success" style="position:relative;">Yardım Yapıldı.</span>
                 }
+                else
+                {
+                    <span class="badge badge-warning" style="position:relative;">Yardım Bekliyor.</span>
+                }
                 @if (item.AdminOnay == false)
                 {
                     <span class="badge badge-danger" style="position:relative;">Onay Bekliyor.</span>
@@ -79,12 +68,41 @@
     }
 
 </table>
+
 @if (Model.Count() == 0)
 {
     <div class="alert alert-danger">
         Eklediğiniz İhtiyaç Sahibi Yok...
     </div>
 }
+
+@if (TempData["Duzenlendi"] != null)
+{
+    var muhtac = (SYP.Models.Muhtac)TempData["Duzenlendi"];
+    <div class="alert alert-success" role="alert">
+        <strong> <span class="glyphicon glyphicon-ok"></span> @muhtac.Baslik </strong> düzenlendi.
+    </div>
+}
+
+@if (TempData["eklendi"] != null)
+{
+    <div class="col-md-12">
+        <div class="alert alert-success">
+            @TempData["eklendi"].ToString()
+        </div>
+    </div>
+}
 <p>
     @Html.ActionLink("İhtiyaç Sahibi Ekle", "Create", "Muhtac", new { area = "" }, new { @class = "btn btn-success btn-xs" })
 </p>
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".alert-success").fadeOut(5000);
+    });
+</script>

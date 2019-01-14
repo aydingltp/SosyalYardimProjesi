@@ -25,6 +25,7 @@
             @Html.DisplayNameFor(model => model.Tarih)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -50,13 +51,32 @@
                     @Html.ActionLink("Onayla", "YardimOnayi", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" });
                 }
             </td>
-            <td width="15%">
+            <td width="10%">
                 <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.Tarih)</font>
             </td>
             <td width="5%">
                 @Html.ActionLink("Detay", "Details", "Muhtac", new { id = item.Muhtac.Id }, new { @class = "btn btn-warning btn-sm" })
             </td>
+            <td width="5%">
+                @Html.ActionLink("Sil", "YardimOnayiSil", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+            </td>
         </tr>
     }
 
 </table>
+
+@if (TempData["Yardimonaysilindi"] != null)
+{
+    <div class="alert alert-success">@TempData["Yardimonaysilindi"]</div>
+}
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".alert-success").fadeOut(3000);
+    });
+</script>

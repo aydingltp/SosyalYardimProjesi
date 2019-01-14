@@ -81,21 +81,21 @@
 
             </table>
             @if (TempData["Yardimeklendi"] != null)
-                {
-                    <div class="alert alert-success" id="yardimveyorum"> <strong>@TempData["Yardimeklendi"]</strong> </div>
-                }
-                @if (TempData["Yardimhata"] != null)
-                {
-                    <div class="alert alert-danger">@TempData["Yardimhata"]</div>
-                }
-                @if (TempData["Yardimsil"] != null)
-                {
-                    <div class="alert alert-danger" id="yardimveyorum">@TempData["Yardimsil"]</div>
-                }
-                @if (Model.Yardimlar.Count() == 0)
-                {
-                    <div class="alert alert-danger">Henüz yapılan yardım yok.</div>
-                }
+            {
+                <div class="alert alert-success" id="yardimveyorum"> <strong>@TempData["Yardimeklendi"]</strong> </div>
+            }
+            @if (TempData["Yardimhata"] != null)
+            {
+                <div class="alert alert-danger">@TempData["Yardimhata"]</div>
+            }
+            @if (TempData["Yardimsil"] != null)
+            {
+                <div class="alert alert-danger" id="yardimveyorum">@TempData["Yardimsil"]</div>
+            }
+            @if (Model.Yardimlar.Count() == 0)
+            {
+                <div class="alert alert-danger">Henüz yapılan yardım yok.</div>
+            }
 
             @if (Session["uyeid"] != null)
             {
@@ -103,10 +103,30 @@
                 <div class="card" style="width:100%; padding:20px;">
                     <form role="form" class="form-inline">
                         <div class="form-group row">
-                            <textarea style="width:1000px" class="form-control col-sm-8 " id="yardim" typeof="text" rows="1" placeholder="Ör:  ***   yardımı yapıldı. "></textarea>
+                            <textarea style="width:1000px" class="form-control col-sm-8 " id="yardim" typeof="text" rows="1" placeholder="Ör:  *****   yardımı yapıldı. "></textarea>
                             <div class="col-sm-4">
-                                <button type="submit" id="yardimgonder" class="btn btn-warning">Yardım Yap</button>
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Yardım Yap</button>
                             </div>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Yardımı Yaptığınızdan Emin misiniz?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body alert-danger">
+                                            Devam ettiğiniz halde yardımınız ekibimiz tarafından kontrol edildikten sonra onaylanacaktır.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                            <button type="submit" id="yardimgonder" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Evet</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                     </form>
@@ -183,7 +203,7 @@
         border-color: #808080;
         border-radius: 10px;
         width: 900px;
-        padding-bottom:30px;
+        padding-bottom: 30px;
     }
 </style>
 

@@ -15,7 +15,6 @@ namespace SYP.Controllers
     public class MuhtacController : Controller
     {
         private DataContext db = new DataContext();
-
         // GET: Muhtac
         public ActionResult Index()
         {
@@ -29,7 +28,6 @@ namespace SYP.Controllers
             {
                 muhtac.Arsivmi = true;
                 muhtac.YardimYapildimi = true;
-                bagissayisi.yapilanyardim++;
                 TempData["arsiveklendi"] = "Başarıyla arşive eklendi.";
                 db.SaveChanges();
                 return RedirectToAction("Index", "Muhtac");
@@ -76,9 +74,9 @@ namespace SYP.Controllers
             var uyeid = Session["uyeid"];
             var yorum = db.Yorumlar.Where(i => i.Id == yorumid).SingleOrDefault();
             var muhtac = db.Muhtaclar.Where(i => i.Id == yorum.KullaniciId).SingleOrDefault();
-            if (yorumid != null)
+            if (yorumid != null && muhtacid!=null)
             {
-                if (yorum.KullaniciId == Convert.ToInt32(uyeid))
+                if (yorum.KullaniciId == Convert.ToInt32(uyeid) || Convert.ToBoolean(Session["yetki"]) == true)
                 {
                     db.Yorumlar.Remove(yorum);
                     db.SaveChanges();
@@ -297,7 +295,6 @@ namespace SYP.Controllers
                     entity.YardimTuru = db.YardimTurler.FirstOrDefault(i => i.Id == muhtac.YardimTuru.Id);
                     entity.Aciliyet = muhtac.Aciliyet;
                     entity.YardimYapildimi = muhtac.YardimYapildimi;
-                    bagissayisi.yapilanyardim++;
                     db.SaveChanges();
                     TempData["Duzenlendi"] = entity;
                     return RedirectToAction("Index", "Giris");

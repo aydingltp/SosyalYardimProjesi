@@ -1,11 +1,10 @@
-﻿@model IEnumerable<SYP.Models.YardimDetay>
-
+﻿@model IEnumerable<SYP.Models.Yorum>
 @{
-    ViewBag.Title = "Yardimlar";
+    ViewBag.Title = "Yorumlar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Yardımlar</h2>
+<h2>Yorumlar</h2>
 
 <table class="table">
     <tr>
@@ -16,13 +15,13 @@
             @Html.DisplayNameFor(model => model.Muhtac.Baslik)
         </th>
         <th>
-            Yapılan Yardım
+            Yapılan Yorum
         </th>
         <th>
             Onay Ver
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Tarih)
+            Yorum Tarihi
         </th>
         <th></th>
         <th></th>
@@ -38,40 +37,40 @@
                 @Html.DisplayFor(modelItem => item.Muhtac.Baslik)
             </td>
             <td width="30%">
-                <small>@Html.DisplayFor(modelItem => item.YapilanYardim)</small>
+                <small>@Html.DisplayFor(modelItem => item.YorumIcerik)</small>
             </td>
             <td width="15%">
                 @if (item.Onay == true)
                 {
                     <span class="badge badge-success" style="">Onaylandı</span>
-                    <small><a class="" style="color:red; font-weight:500 " href="/Admin/YardimOnayi/@item.Id">Geri Al</a></small>
+                    <small><a class="" style="color:red; font-weight:500 " href="/Admin/YorumOnayi/@item.Id">Geri Al</a></small>
                 }
                 else
                 {
-                    @Html.ActionLink("Onayla", "YardimOnayi", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" });
+                    @Html.ActionLink("Onayla", "YorumOnayi", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" });
                 }
             </td>
             <td width="10%">
-                <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.Tarih)</font>
+                <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.YorumTarihi)</font>
             </td>
             <td width="5%">
                 @Html.ActionLink("Detay", "Details", "Muhtac", new { id = item.Muhtac.Id }, new { @class = "btn btn-warning btn-sm" })
             </td>
             <td width="5%">
-                @Html.ActionLink("Sil", "YardimOnayiSil", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                @Html.ActionLink("Sil", "YorumOnayiSil", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
             </td>
         </tr>
     }
 
 </table>
 
-@if (TempData["Yardimonaysilindi"] != null)
+@if (TempData["Yorumonaysilindi"] != null)
 {
-    <div class="alert alert-success">@TempData["Yardimonaysilindi"]</div>
+    <div class="alert alert-success">@TempData["Yorumonaysilindi"]</div>
 }
-@if (Model.Count() == 0)
+@if (Model.Count()==0)
 {
-    <div class="alert alert-danger"> Henüz Yardım Yok.</div>
+    <div class="alert alert-danger"> Henüz Yorum Yok.</div>
 }
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>

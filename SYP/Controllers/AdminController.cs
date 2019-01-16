@@ -78,6 +78,7 @@ namespace SYP.Controllers
                 muhtac.AdminOnay = models[i].AdminOnay;
 
             }
+            TempData["Kaydedildi"] = "Değişiklikler başarıyla kaydedildi.";
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -128,6 +129,38 @@ namespace SYP.Controllers
             return View(arsivler);
         }
 
+        [GirisKontrolFiltresi]
+        public ActionResult Yorumlar()
+        {
+            var yorumlar = db.Yorumlar.OrderBy(i => i.Onay).ToList();
+            return View(yorumlar);
+        }
+        public ActionResult YorumOnayi(int id)
+        {
+            var yorumdetay = db.Yorumlar.Where(i => i.Id == id).FirstOrDefault();
+            if (yorumdetay.Onay == false)
+            {
+                yorumdetay.Onay = true;
+                db.SaveChanges();
+            }
+            else
+            {
+                yorumdetay.Onay = false;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Yorumlar");
+        }
+        public ActionResult YorumOnayiSil(int id)
+        {
+            var yorumonay = db.Yorumlar.Where(i => i.Id == id).FirstOrDefault();
+            if (yorumonay != null)
+            {
+                db.Yorumlar.Remove(yorumonay);
+                db.SaveChanges();
+                TempData["Yorumonaysilindi"] = "Yorum Onayı Silindi";
+            }
+            return RedirectToAction("Yorumlar");
+        }
 
     }
 }

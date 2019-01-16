@@ -53,7 +53,7 @@
             <div class="alert alert-warning" style="text-align:center"><strong>YAPILAN YARDIMLAR</strong>  </div>
 
             <table class="table table-bordered">
-                @foreach (var item in Model.Yardimlar)
+                @foreach (var item in Model.Yardimlar.Where(i => i.Onay == true))
                 {
                     <tr>
                         <td width="15%">
@@ -61,18 +61,9 @@
                         </td>
                         <td width="67%">
                             <small> @Html.DisplayFor(modelItem => item.YapilanYardim)</small>
-                            @if (item.Onay == false)
-                            {
-                                <span class="badge badge-danger" style="position:absolute; right:180px;">Onay Bekliyor</span>
-                            }
-                            else
-                            {
-                                <span class="badge badge-success" style="position:absolute; right:180px;">Onaylı</span>
-                            }
                         </td>
                         <td width="18%">
                             <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.Tarih)</font>
-
                         </td>
 
                     </tr>
@@ -157,7 +148,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#yardimveyorum").fadeOut(8000);
+        $("#yardimveyorum").fadeOut(10000);
     });
 </script>
 <script type="text/javascript">

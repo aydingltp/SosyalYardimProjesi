@@ -64,7 +64,7 @@ namespace SYP.Controllers
             if (yorum != null)
             {
                 db.Yorumlar.Add(new Yorum() { KullaniciId = Convert.ToInt32(kullaniciid), MuhtacId = Convert.ToInt32(muhtacid), YorumIcerik = yorum, YorumTarihi = DateTime.Now });
-                TempData["Yorumeklendi"] = "Yorum Eklendi.";
+                TempData["Yorumeklendi"] = "Yorumunuz kontrol edildikten sonra gözükecektir.";
                 db.SaveChanges();
             }
             return Json(false, JsonRequestBehavior.AllowGet);

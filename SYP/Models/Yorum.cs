@@ -13,12 +13,11 @@ namespace SYP.Models
         public int? KullaniciId { get; set; }
         public int? MuhtacId { get; set; }
 
-
         [Display(Name = "Yorum Yap")]
         [StringLength(500)]
         public string YorumIcerik { get; set; }
         public DateTime? YorumTarihi { get; set; }
-        public Portal Portal { get; set; }
+        public bool  Onay { get; set; }
         public virtual Kullanici Kullanici { get; set; }
         public virtual Muhtac Muhtac { get; set; }
 

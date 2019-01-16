@@ -206,6 +206,7 @@
     <Content Include="Views\Admin\Kullanicilar.cshtml" />
     <Content Include="Views\Admin\Yardimlar.cshtml" />
     <Content Include="Views\Admin\Arsiv.cshtml" />
+    <Content Include="Views\Admin\Yorumlar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

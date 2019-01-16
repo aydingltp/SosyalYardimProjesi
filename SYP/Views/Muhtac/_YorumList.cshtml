@@ -4,14 +4,14 @@
     <div class="alert alert-primary" style="text-align:center"><strong>YORUMLAR</strong>  </div>
 
     <table class="table table-bordered">
-        @foreach (var item in Model)
+        @foreach (var item in Model.Where(i=>i.Onay==true))
         {
             <tr>
                 <td width="15%">
                     <i class="fa fa-user"></i>  <font face="Comic sans MS" size=" 3">@item.Kullanici.KullaniciAdi</font>
                 </td>
                 <td width="60%">
-                    @Html.DisplayFor(modelItem => item.YorumIcerik)
+                    <small>@Html.DisplayFor(modelItem => item.YorumIcerik)</small>  
                 </td>
                 <td width="20%">
                     <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.YorumTarihi)</font>
@@ -40,7 +40,7 @@
     {
         <div class="alert alert-danger" id="yardimveyorum"> <strong>@TempData["Yorumsil"]</strong> </div>
     }
-    @if (Model.Count() == 0)
+    @if (Model.Where(i=>i.Onay==true).Count() == 0)
     {
         <div class="alert alert-light"> Henüz yorum yok!</div>
     }

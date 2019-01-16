@@ -36,9 +36,9 @@ namespace SYP.Models
             context.SaveChanges();
             List<Kullanici> kullanici = new List<Kullanici>()
             {
-                new Kullanici(){KullaniciAdi="admin", Isim="Aydın",Soyisim="Gültepe",Tel="5541407046",Eposta="aydngltp@gmail.com",Sifre="aa",SifreConfirm="aa",Adminmi=true},
-                new Kullanici(){KullaniciAdi="ahmet34",Isim="Ahmet",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a1",SifreConfirm="a1",Adminmi=false},
-                new Kullanici(){KullaniciAdi="yusuf65",Isim="Yusuf",Soyisim="Gültepe",Tel="123",Eposta="aydngltp@gmail.com",Sifre="a2",SifreConfirm="a2",Adminmi=false}
+                new Kullanici(){KullaniciAdi="admin", Isim="Aydın",Soyisim="Gültepe",Tel="5554440000",Eposta="aydngltp@gmail.com",Sifre="admin",SifreConfirm="admin",Adminmi=true},
+                new Kullanici(){KullaniciAdi="erdi34",Isim="Erdi",Soyisim="Gültepe",Tel="5551110000",Eposta="erdigltp@gmail.com",Sifre="a1",SifreConfirm="a1",Adminmi=false},
+                new Kullanici(){KullaniciAdi="yusuf65",Isim="Yusuf",Soyisim="Süpürgeci",Tel="5552220000",Eposta="yusuf@gmail.com",Sifre="a2",SifreConfirm="a2",Adminmi=false}
             };
             foreach (var item in kullanici)
             {
@@ -77,7 +77,7 @@ namespace SYP.Models
                 new Muhtac()
                 {
                     Baslik ="Acil Maddi Destek",
-                    Aciklama ="Faturalın ödenmesi için maddi yardım gerekiyor.",
+                    Aciklama ="Faturaların ödenmesi için maddi yardım gerekiyor.",
                     YardimTuru=context.YardimTurler.FirstOrDefault(i=>i.Id==2),
                     Aciliyet =5,
                     Adres =new Adres{Ilce="Keşan",

@@ -46,8 +46,14 @@
 
         </div>
 
-        <h2 class="alert-success" style="text-align:center"> Yardım Bekleyen İhtiyaç Sahipleri </h2>
+        <h2 class="alert-info" style="text-align:center"> Yardım Bekleyen İhtiyaç Sahipleri </h2>
 
+        @if (TempData["Kaydedildi"] != null)
+        {
+            <div class="alert alert-success">
+                <strong> @TempData["Kaydedildi"] </strong>
+            </div>
+        }
 
         @using (Html.BeginForm("Kaydet", "Admin", FormMethod.Post))
         {
@@ -114,6 +120,7 @@
                             <h4> Kayıt Bulunamadı...</h4>
                         </div>
                     }
+
                     <button type="submit" class="btn btn-danger" style="text-align:right; margin-bottom:20px">Kaydet</button>
                 </div>
             </div>
@@ -123,3 +130,13 @@
     </div>
 </div>
 
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".alert-success").fadeOut(4000);
+    });
+</script>

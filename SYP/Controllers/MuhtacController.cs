@@ -18,7 +18,7 @@ namespace SYP.Controllers
         // GET: Muhtac
         public ActionResult Index()
         {
-            var muhtaclar = db.Muhtaclar.Where(i => i.Arsivmi == false).OrderBy(i => i.YardimYapildimi).OrderBy(i=>i.AdminOnay).ToList();
+            var muhtaclar = db.Muhtaclar.Where(i => i.Arsivmi == false).OrderBy(i => i.YardimYapildimi).OrderBy(i => i.AdminOnay).ToList();
             return View(muhtaclar);
         }
         public ActionResult Arsivle(int id)
@@ -46,7 +46,13 @@ namespace SYP.Controllers
             var kullaniciid = Session["uyeid"];
             if (yardim != null)
             {
-                db.Yardimlar.Add(new YardimDetay() { KullaniciId = Convert.ToInt32(kullaniciid), MuhtacId = Convert.ToInt32(muhtacid), YapilanYardim = yardim, Tarih = DateTime.Now });
+                db.Yardimlar.Add(new YardimDetay()
+                {
+                    KullaniciId = Convert.ToInt32(kullaniciid),
+                    MuhtacId = Convert.ToInt32(muhtacid),
+                    YapilanYardim = yardim,
+                    Tarih = DateTime.Now
+                });
                 TempData["Yardimeklendi"] = "Yardımınız; ekibimiz tarafından onaylandıktan sonra kaydedilecektir.";
                 db.SaveChanges();
             }
@@ -63,7 +69,13 @@ namespace SYP.Controllers
             var kullaniciid = Session["uyeid"];
             if (yorum != null)
             {
-                db.Yorumlar.Add(new Yorum() { KullaniciId = Convert.ToInt32(kullaniciid), MuhtacId = Convert.ToInt32(muhtacid), YorumIcerik = yorum, YorumTarihi = DateTime.Now });
+                db.Yorumlar.Add(new Yorum()
+                {
+                    KullaniciId = Convert.ToInt32(kullaniciid),
+                    MuhtacId = Convert.ToInt32(muhtacid),
+                    YorumIcerik = yorum,
+                    YorumTarihi = DateTime.Now
+                });
                 TempData["Yorumeklendi"] = "Yorumunuz kontrol edildikten sonra gözükecektir.";
                 db.SaveChanges();
             }
@@ -74,7 +86,7 @@ namespace SYP.Controllers
             var uyeid = Session["uyeid"];
             var yorum = db.Yorumlar.Where(i => i.Id == yorumid).SingleOrDefault();
             var muhtac = db.Muhtaclar.Where(i => i.Id == yorum.KullaniciId).SingleOrDefault();
-            if (yorumid != null && muhtacid!=null)
+            if (yorumid != null && muhtacid != null)
             {
                 if (yorum.KullaniciId == Convert.ToInt32(uyeid) || Convert.ToBoolean(Session["yetki"]) == true)
                 {
@@ -152,7 +164,11 @@ namespace SYP.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var muhtac = db.Muhtaclar.Include(i => i.Il).Include(i => i.Adres).Include(i => i.YardimTuru).Where(i => i.Id == id).FirstOrDefault();
+            var muhtac = db.Muhtaclar.Include(i => i.Il)
+                                    .Include(i => i.Adres)
+                                    .Include(i => i.YardimTuru)
+                                    .Where(i => i.Id == id)
+                                    .FirstOrDefault();
 
             if (muhtac == null)
             {

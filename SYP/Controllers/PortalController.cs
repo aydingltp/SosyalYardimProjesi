@@ -62,7 +62,7 @@ namespace SYP.Controllers
                     FileInfo resiminfo = new FileInfo(Resim.FileName);
 
                     string newresim = Guid.NewGuid().ToString() + resiminfo.Extension;
-                    img.Resize(800, 350);
+                    img.Resize(600, 350);
                     img.Save("~/Uploads/" + newresim);
                     portal.Resim = "/Uploads/" + newresim;
                 }
@@ -111,7 +111,7 @@ namespace SYP.Controllers
                     FileInfo resiminfo = new FileInfo(Resim.FileName);
 
                     string newresim = Guid.NewGuid().ToString() + resiminfo.Extension;
-                    img.Resize(800, 350);
+                    img.Resize(600, 350);
                     img.Save("~/Uploads/" + newresim);
                     yeniportal.Resim = "/Uploads/" + newresim;
                     yeniportal.Baslik = portal.Baslik;

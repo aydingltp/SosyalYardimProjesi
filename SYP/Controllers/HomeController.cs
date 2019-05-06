@@ -37,9 +37,9 @@ namespace SYP.Controllers
                 yapilanyardim = yardimsayisi.Count(i => i.YardimYapildimi == true)
             };
 
-
             return PartialView("bagisIstatistik",models);
         }
+
         public PartialViewResult bagisSayilari()
         {
             var muhtaclar = db.Muhtaclar.Where(i => i.AdminOnay == true).Where(i=>i.YardimYapildimi==false).Where(i=>i.Arsivmi==false);

@@ -14,38 +14,42 @@
     <h4>Yardım Bilgileri</h4>
     <br />
     <div class="row">
-        <div class="col-md-6 form-group">
-            <strong>Adı ve Soyadı:</strong>  @Html.DisplayFor(model => model.MuhtacAdiSoyadi)
+        <div class="col-md-6">
+            <div class="form-group">
+                <strong>Adı ve Soyadı:</strong>  @Html.DisplayFor(model => model.MuhtacAdiSoyadi)
+            </div>
+            <div class="form-group">
+                <strong>Açıklama:</strong>  @Html.DisplayFor(model => model.Aciklama)
+            </div>
+            <div class="form-group">
+                <strong>Adres: </strong> @Html.DisplayFor(model => model.Adres.AdresDetay) /
+                @Html.DisplayFor(model => model.Il.IlAdi) /
+                @Html.DisplayFor(model => model.Adres.Ilce)
+            </div>
+            <div class="form-group">
+                <span class="alert alert-success"> <strong>@Model.Okunma.ToString()</strong> <font face="Comic sans MS" size="2"> defa görüntülendi.</font> </span>
+            </div>
         </div>
-        <div class="col-md-6 form-group">
-            <strong>Açıklama:</strong>  @Html.DisplayFor(model => model.Aciklama)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 form-group">
-            <strong>Yardım Türü: </strong> @Html.DisplayFor(model => model.YardimTuru.YardimTuruAdi)
-        </div>
-        <div class="col-md-6 form-group">
-            <strong>Aciliyet:</strong>  @Html.DisplayFor(model => model.Aciliyet)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 form-group">
-            <strong>Adres: </strong> @Html.DisplayFor(model => model.Adres.AdresDetay) /
-            @Html.DisplayFor(model => model.Il.IlAdi) /
-            @Html.DisplayFor(model => model.Adres.Ilce)
+        <div class="col-md-6">
+            <div class="form-group">
+                <strong>Yardım Türü: </strong> @Html.DisplayFor(model => model.YardimTuru.YardimTuruAdi)
+            </div>
+            <div class="form-group">
+                <strong>Aciliyet:</strong>  @Html.DisplayFor(model => model.Aciliyet)
+            </div>
+            <div class="form-group">
+                <strong>Google Map Link:</strong> 
+                <a href="https://www.google.com/maps/place/@Model.GoogleMap"><img class="animated  flash  delay-4s slower"
+                                src="/bitirmeresim/googlemap.png" 
+                                style="width: 50px; height: auto"/></a>
+                
+            </div>
         </div>
 
     </div>
-
-    <div class="row">
-        <div class="col-md-12 form-group">
-            <span class="alert alert-success"> <strong>@Model.Okunma.ToString()</strong> <font face="Comic sans MS" size="2"> defa görüntülendi.</font> </span>
-        </div>
-    </div>
-
-
+  
 </div>
+
 <div class="container" style="width:900px; margin-top:30px">
     <div class="row">
 

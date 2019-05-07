@@ -158,6 +158,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901161020588_InitialCreate.cs" />
+    <Compile Include="Migrations\201901161020588_InitialCreate.Designer.cs">
+      <DependentUpon>201901161020588_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905071104156_GoogleMap-v1.cs" />
+    <Compile Include="Migrations\201905071104156_GoogleMap-v1.Designer.cs">
+      <DependentUpon>201905071104156_GoogleMap-v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Adres.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\DataInitializer.cs" />
@@ -216,7 +225,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Migrations\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +232,14 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201901161020588_InitialCreate.resx">
+      <DependentUpon>201901161020588_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905071104156_GoogleMap-v1.resx">
+      <DependentUpon>201905071104156_GoogleMap-v1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

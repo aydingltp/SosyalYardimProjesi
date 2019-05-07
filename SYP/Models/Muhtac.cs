@@ -37,7 +37,7 @@ namespace SYP.Models
         public bool Arsivmi { get; set; }
         public bool AdminOnay { get; set; }
         public int? Okunma { get; set; }
-
+        public string GoogleMap { get; set; }
         public Kullanici Kullanici { get; set; }
         public virtual ICollection<YardimDetay> Yardimlar { get; set; }
 

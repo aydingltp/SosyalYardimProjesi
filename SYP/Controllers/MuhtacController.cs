@@ -175,6 +175,7 @@ namespace SYP.Controllers
                 return HttpNotFound();
             }
             return View(muhtac);
+            // < a href = "https://www.google.com/maps/place/istanbul sultanbeyli göltepe sk. no 12" > normal map link</ a >
 
         }
 
@@ -209,7 +210,8 @@ namespace SYP.Controllers
         [GirisKontrolFiltresi]
         public ActionResult Create(Muhtac muhtac)
         {
-
+            var ilgelen = db.Iller.FirstOrDefault(p => p.Id == muhtac.Il.Id);
+            string maplink = ilgelen.IlAdi + " " + muhtac.Adres.Ilce + " " + muhtac.Adres.AdresDetay;
             if (ModelState.IsValid)
             {
                 int? kullaniciId = (Int32)Session["uyeid"];
@@ -224,7 +226,8 @@ namespace SYP.Controllers
                     MuhtacAdiSoyadi = muhtac.MuhtacAdiSoyadi,
                     YardimTuru = db.YardimTurler.FirstOrDefault(p => p.Id == muhtac.YardimTuru.Id),
                     Il = db.Iller.FirstOrDefault(p => p.Id == muhtac.Il.Id),
-                    Okunma = 0
+                    Okunma = 0,
+                    GoogleMap = maplink
                 };
                 TempData["eklendi"] = "İhtiyaç Sahibi Eklendi";
                 db.Muhtaclar.Add(yenimuhtac);

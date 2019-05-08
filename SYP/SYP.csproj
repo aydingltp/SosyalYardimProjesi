@@ -102,6 +102,7 @@
     <Content Include="bitirmeresim\giysi2.png" />
     <Content Include="bitirmeresim\saglik.jpg" />
     <Content Include="bitirmeresim\tl22.png" />
+    <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />

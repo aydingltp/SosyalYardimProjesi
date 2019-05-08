@@ -211,7 +211,7 @@ namespace SYP.Controllers
         public ActionResult Create(Muhtac muhtac)
         {
             var ilgelen = db.Iller.FirstOrDefault(p => p.Id == muhtac.Il.Id);
-            string maplink = muhtac.Adres.AdresDetay +" "+ ilgelen.IlAdi + "/" + muhtac.Adres.Ilce;
+            string maplink = ilgelen.IlAdi + " " + muhtac.Adres.Ilce + " " + muhtac.Adres.AdresDetay;
             if (ModelState.IsValid)
             {
                 int? kullaniciId = (Int32)Session["uyeid"];

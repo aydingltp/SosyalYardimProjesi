@@ -5,8 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script src="https://api-maps.yandex.ru/2.1/?lang=en_US&load=Geolink"
-        type="text/javascript"></script>
+
 
 <div class="container" id="adresid">
 
@@ -39,18 +38,11 @@
                 <strong>Aciliyet:</strong>  @Html.DisplayFor(model => model.Aciliyet)
             </div>
             <div class="form-group">
-                <strong>Google Harita :</strong> 
-                <a href="https://www.google.com/maps/place/@Model.GoogleMap">
-                    <img class="animated  flash  delay-4s slower"
-                         src="/bitirmeresim/googlemap.png"
-                         style="width: 50px; height: auto"/>
-                </a> 
-            </div>
-            <div class="form-group">
-                <strong>Yandex Harita: </strong> 
-                <span class="ymaps-geolink" style="font-size: small">
-                    @Model.GoogleMap
-                </span>
+                <strong>Google Map Link:</strong> 
+                <a href="https://www.google.com/maps/place/@Model.GoogleMap"><img class="animated  flash  delay-4s slower"
+                                src="/bitirmeresim/googlemap.png" 
+                                style="width: 50px; height: auto"/></a>
+                
             </div>
         </div>
 
@@ -157,14 +149,6 @@
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script type="text/javascript">
-    //$(document).ready(function () {
-    //    setTimeout(function() {
-    //        $('.ymaps-geolink').click(); 
-    //    }, 2000);
-    
-    //});
-</script>
 
 <script type="text/javascript">
     $(document).ready(function () {

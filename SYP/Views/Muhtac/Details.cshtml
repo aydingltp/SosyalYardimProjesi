@@ -55,10 +55,9 @@
         </div>
 
     </div>
-  
 </div>
 
-<div class="container" style="width:900px; margin-top:30px">
+<div class="container details2" style="width:900px; margin-top:30px">
     <div class="row">
 
         <div class="card" style="width:100%; margin-top:20px; margin-bottom:20px; border:solid 2px rgba(184, 181, 181, 0.85)">
@@ -69,13 +68,13 @@
                 {
                     <tr>
                         <td width="15%">
-                            <i class="fa fa-user"></i>  <font face="Comic sans MS" size=" 3">@item.Kullanici.KullaniciAdi</font>
+                            <i class="fa fa-user"></i>  <font face="Comic sans MS" size="3">@item.Kullanici.KullaniciAdi</font>
                         </td>
                         <td width="67%">
                             <small> @Html.DisplayFor(modelItem => item.YapilanYardim)</small>
                         </td>
                         <td width="18%">
-                            <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.Tarih)</font>
+                            <font face="Comic sans MS" size="2">@Html.DisplayFor(modelItem => item.Tarih)</font>
                         </td>
 
                     </tr>
@@ -141,7 +140,7 @@
 
     </div>
 </div>
-<div class="container" style="width:900px; margin-top:30px">
+<div class="container details3" style="width:900px; margin-top:30px">
 
     <div class="row">
         @Html.Action("YorumList", new { id = Model.Id })

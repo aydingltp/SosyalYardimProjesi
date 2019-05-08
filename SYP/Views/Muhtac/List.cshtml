@@ -12,8 +12,9 @@
         border-radius: 50%;
     }
 </style>
+<link rel="stylesheet" href="~/Content/Site.css" />
 
-<div class="row">
+<div class="row listrow">
     <div class="col-md-3">
         @Html.Partial("AramaPartial")
         @Html.Action("bagisSayilari", "Home")
@@ -76,7 +77,7 @@
                     </td>
                     <td width="50%">
                         <small>  @Html.DisplayFor(modelItem => item.Aciklama)</small>
-                      
+
                     </td>
                     <td width="15%">
                         <small>

@@ -5,47 +5,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Kayıtlı Kullanıcılar</h2>
-<br />
+<div class="tablerow">
+    
+    <h2>Kayıtlı Kullanıcılar</h2>
+    <br />
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.KullaniciAdi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Isim)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Soyisim)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Eposta)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KullaniciAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Isim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soyisim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Eposta)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.KullaniciAdi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Isim)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Soyisim)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Eposta)
-        </td>
-    </tr>
-}
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KullaniciAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Isim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soyisim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Eposta)
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

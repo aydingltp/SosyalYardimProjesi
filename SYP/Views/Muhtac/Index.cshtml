@@ -4,68 +4,71 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/Site.css" rel="stylesheet" />
 
-<h2>Güncel İhtiyaç Sahiplerinin Listesi </h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Baslik)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MuhtacAdiSoyadi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aciklama)
-        </th>
-        <th>
-            Tarih
-        </th>
-        <th>Durum</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div class="tablerow" style="overflow-x:auto;">
+    <h2>Güncel İhtiyaç Sahiplerinin Listesi </h2>
+    <table class="table">
         <tr>
-            <td width="15%">
-                @Html.DisplayFor(modelItem => item.Baslik)
-                @if (item.YardimYapildimi == true)
-                {
-                    <span class="badge badge-danger" style="">Arşivlenebilir</span>
-                }
-            </td>
-            <td width="15%">
-                <small>@Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)</small>
-            </td>
-            <td width="25%">
-                <small>@Html.DisplayFor(modelItem => item.Aciklama)</small>
-            </td>
-            <td width="10%">
-                <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.EklenmeTarihi)</font>
-            </td>
-            <td width="10">
-                @if (item.AdminOnay == true)
-                {
-                    <span class="badge badge-info" style="">Onaylı</span>
-                }
-                else
-                {
-                    <span class="badge badge-danger" style="">Onay Bekliyor</span>
-                }
-                @if (item.YardimYapildimi == true)
-                {
-                    <span class="badge badge-success" style="">Yardım Yapıldı.</span>
-                }
-            </td>
-            <td width="25%">
-                @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })  |
-                @Html.ActionLink("Detay", "Details", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })  |
-                @Html.ActionLink("Arşivle", "Arsivle", "Muhtac", new { id = item.Id }, new { @class = "btn btn-dark btn-sm" })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MuhtacAdiSoyadi)
+            </th>
+            <th class="aciklamatth">
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+            <th>
+                Tarih
+            </th>
+            <th>Durum</th>
+            <th></th>
         </tr>
-    }
-</table>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="15%">
+                    @Html.DisplayFor(modelItem => item.Baslik)
+                    @if (item.YardimYapildimi == true)
+                    {
+                        <span class="badge badge-danger" style="">Arşivlenebilir</span>
+                    }
+                </td>
+                <td width="15%">
+                    <small>@Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)</small>
+                </td>
+                <td width="25%" class="aciklamatth">
+                    <small>@Html.DisplayFor(modelItem => item.Aciklama)</small>
+                </td>
+                <td width="10%">
+                    <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.EklenmeTarihi)</font>
+                </td>
+                <td width="10">
+                    @if (item.AdminOnay == true)
+                    {
+                        <span class="badge badge-info" style="">Onaylı</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger" style="">Onay Bekliyor</span>
+                    }
+                    @if (item.YardimYapildimi == true)
+                    {
+                        <span class="badge badge-success" style="">Yardım Yapıldı.</span>
+                    }
+                </td>
+                <td width="25%">
+                    @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })  |
+                    @Html.ActionLink("Detay", "Details", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })  |
+                    @Html.ActionLink("Arşivle", "Arsivle", "Muhtac", new { id = item.Id }, new { @class = "btn btn-dark btn-sm" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
 
 @if (Model.Count() == 0)
 {

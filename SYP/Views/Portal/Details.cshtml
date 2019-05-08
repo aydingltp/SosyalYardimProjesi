@@ -4,17 +4,21 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link href="~/Content/Site.css" rel="stylesheet" />
+<style>
+    .card-img-top {
+        width: 85% !important;
+    }
+</style>
 
 <h1>@Model.Baslik</h1>
 <hr />
 
 <p>
-    <span class="glyphicon glyphicon-time"></span>
-    @Model.EklenmeTarihi
+    <span class="glyphicon glyphicon-time"> @Model.EklenmeTarihi</span>
 </p>
 <hr />
-<img class="img-responsive" src="@Model.Resim" />
+<img class="card-img-top" src="@Model.Resim" />
 <hr />
 
 <p>

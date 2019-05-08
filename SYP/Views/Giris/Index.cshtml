@@ -5,98 +5,101 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Eklediğiniz İhtiyaç Sahipleri</h2>
-<hr />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<div class="girisindex">
+    <h2>Eklediğiniz İhtiyaç Sahipleri</h2>
+    <hr />
 
 
-<table class="table table-bordered table-hover table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Baslik)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MuhtacAdiSoyadi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Adres)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aciliyet)
-        </th>
-        <th>
-            Durum
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table table-bordered table-hover table-striped">
         <tr>
-            <td width="25%">
-                @Html.DisplayFor(modelItem => item.Baslik)
-            </td>
-            <td width="20%">
-                @Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)
-            </td>
-            <td width="20%">
-                @Html.DisplayFor(modelItem => item.Il.IlAdi) /
-                @Html.DisplayFor(modelItem => item.Adres.Ilce)
-            </td>
-            <td width="5%">
-                @Html.DisplayFor(modelItem => item.Aciliyet)
-            </td>
-            <td width="10%">
-                @if (item.YardimYapildimi == true)
-                {
-                    <span class="badge badge-success" style="position:relative;">Yardım Yapıldı.</span>
-                }
-                else
-                {
-                    <span class="badge badge-warning" style="position:relative;">Yardım Bekliyor.</span>
-                }
-                @if (item.AdminOnay == false)
-                {
-                    <span class="badge badge-danger" style="position:relative;">Onay Bekliyor.</span>
-                }
-            </td>
-            <td width="20%">
-                @Html.ActionLink("Düzenle", "Edit", "Muhtac", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
-                @Html.ActionLink("Detay", "Details", "Muhtac", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" }) |
-                @Html.ActionLink("Sil", "Delete", "Muhtac", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+            <th>
+                Ad ve Soyad
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adres)
+            </th>
+            <th class="aciliyetth">
+                @Html.DisplayNameFor(model => model.Aciliyet)
+            </th>
+            <th>
+                Durum
+            </th>
+            <th></th>
         </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="25%">
+                    @Html.DisplayFor(modelItem => item.Baslik)
+                </td>
+                <td width="20%">
+                    @Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)
+                </td>
+                <td width="20%">
+                    @Html.DisplayFor(modelItem => item.Il.IlAdi) /
+                    @Html.DisplayFor(modelItem => item.Adres.Ilce)
+                </td>
+                <td width="5%" class="aciliyettd">
+                    @Html.DisplayFor(modelItem => item.Aciliyet)
+                </td>
+                <td width="10%" class="tddurum">
+                    @if (item.YardimYapildimi == true)
+                    {
+                        <span class="badge badge-success" style="position:relative;">Yardım Yapıldı.</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-warning" style="position:relative;">Yardım Bekliyor.</span>
+                    }
+                    @if (item.AdminOnay == false)
+                    {
+                        <span class="badge badge-danger" style="position:relative;">Onay Bekliyor.</span>
+                    }
+                </td>
+                <td width="20%">
+                    @Html.ActionLink("Düzenle", "Edit", "Muhtac", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" }) |
+                    @Html.ActionLink("Detay", "Details", "Muhtac", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" }) |
+                    @Html.ActionLink("Sil", "Delete", "Muhtac", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    @if (Model.Count() == 0)
+    {
+        <div class="alert alert-danger">
+            Eklediğiniz İhtiyaç Sahibi Yok...
+        </div>
     }
 
-</table>
-
-@if (Model.Count() == 0)
-{
-    <div class="alert alert-danger">
-        Eklediğiniz İhtiyaç Sahibi Yok...
-    </div>
-}
-
-@if (TempData["Duzenlendi"] != null)
-{
-    var muhtac = (SYP.Models.Muhtac)TempData["Duzenlendi"];
-    <div class="alert alert-success" role="alert">
-        <strong> <span class="glyphicon glyphicon-ok"></span> @muhtac.Baslik </strong> düzenlendi.
-    </div>
-}
-
-@if (TempData["eklendi"] != null)
-{
-    <div class="col-md-12">
-        <div class="alert alert-success">
-            @TempData["eklendi"].ToString()
+    @if (TempData["Duzenlendi"] != null)
+    {
+        var muhtac = (SYP.Models.Muhtac)TempData["Duzenlendi"];
+        <div class="alert alert-success" role="alert">
+            <strong> <span class="glyphicon glyphicon-ok"></span> @muhtac.Baslik </strong> düzenlendi.
         </div>
-    </div>
-}
-<p>
-    @Html.ActionLink("İhtiyaç Sahibi Ekle", "Create", "Muhtac", new { area = "" }, new { @class = "btn btn-success btn-xs" })
-</p>
+    }
+
+    @if (TempData["eklendi"] != null)
+    {
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                @TempData["eklendi"].ToString()
+            </div>
+        </div>
+    }
+    <p>
+        @Html.ActionLink("İhtiyaç Sahibi Ekle", "Create", "Muhtac", new { area = "" }, new { @class = "btn btn-success btn-xs" })
+    </p>
 
 
+</div>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

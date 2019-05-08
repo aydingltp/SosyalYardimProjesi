@@ -5,46 +5,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Arşiv</h2>
+<div class="tablerow">
+    <h2>Arşiv</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Baslik)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MuhtacAdiSoyadi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aciklama)
-        </th>
-        <th>
-            Tarih
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td width="20%">
-                @Html.DisplayFor(modelItem => item.Baslik)
-            </td>
-            <td width="15%">
-                @Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)
-            </td>
-            <td width="30%">
-                <small>@Html.DisplayFor(modelItem => item.Aciklama)</small>
-            </td>
-            <td width="10%">
-                <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.EklenmeTarihi)</font>
-            </td>
-            <td width="25%">
-                @Html.ActionLink("Arşivden Geri Al", "Arsivle", "Muhtac", new { id = item.Id }, new { @class = "btn btn-dark btn-sm" })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MuhtacAdiSoyadi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+            <th>
+                Tarih
+            </th>
+            <th></th>
         </tr>
-    }
-</table>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="20%">
+                    @Html.DisplayFor(modelItem => item.Baslik)
+                </td>
+                <td width="15%">
+                    @Html.DisplayFor(modelItem => item.MuhtacAdiSoyadi)
+                </td>
+                <td width="30%">
+                    <small>@Html.DisplayFor(modelItem => item.Aciklama)</small>
+                </td>
+                <td width="10%">
+                    <font face="Comic sans MS" size=" 2">@Html.DisplayFor(modelItem => item.EklenmeTarihi)</font>
+                </td>
+                <td width="25%">
+                    @Html.ActionLink("Arşivden Geri Al", "Arsivle", "Muhtac", new { id = item.Id }, new { @class = "btn btn-dark btn-sm" })
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
 @if (Model.Count() == 0)
 {
     <div class="alert alert-danger"> Henüz kayıt yok!</div>

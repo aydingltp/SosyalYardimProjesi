@@ -1,5 +1,4 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
 }
 
@@ -16,3 +15,176 @@ textarea {
     max-width: 280px;
 }
 
+
+@media only screen and (max-width: 600px) {
+    body {
+        /*background-color: antiquewhite;*/
+    }
+
+    .search {
+        display: none;
+    }
+
+    .bagisdiv {
+        margin-bottom: 10px;
+    }
+
+        .bagisdiv .card-header {
+            padding: .35rem 1.25rem;
+        }
+
+        .bagisdiv .card-body {
+            padding: 0.1rem;
+        }
+
+            .bagisdiv .card-body .list-group .list-group-item {
+                padding: 0.25rem 0.00rem !important;
+            }
+
+
+    .bagisistatistik .card-header {
+        padding: .25rem 1.25rem;
+    }
+
+        .bagisistatistik .card-header h5 {
+            font-size: 15px;
+        }
+
+    .bagisistatistik .card-body {
+        padding: .65rem 1.25rem;
+    }
+
+        .bagisistatistik .card-body h6 {
+            font-size: 14px;
+        }
+
+            .bagisistatistik .card-body h6 font {
+                font-size: small
+            }
+
+    .imgler  {
+        display: none;
+    }
+    .listrow h2 {
+        font-size: large
+    }
+    .listrow th {
+        padding: .10rem !important;
+        font-size: 10px;
+    }
+    .listrow td {
+        font-size: 10px;
+    }
+    .listrow .btn {
+        font-size: .475rem; 
+    }
+    #adresid {
+        width: 100% !important;
+    }
+    #adresid h2 {
+        padding: .05rem 1.25rem;
+    } 
+    #adresid h4 {
+          font-size: large
+     } 
+    #adresid .form-group  {
+        font-size: small;
+    } 
+    #adresid .form-group .alert  {
+        padding: .25rem 1.25rem;
+    } 
+
+    .details2 {
+        width: 100% !important;
+    }
+    .details2 font {
+        font-size: 12px;
+    }
+    .details3 {
+        width: 100% !important;
+    }
+    .details2 .alert {
+        margin-bottom: 1px;
+    }
+
+    .details3 .alert {
+        margin-bottom: 1px;
+    }
+    .girisindex h2 {
+        font-size: large
+    }
+    .girisindex th {
+        padding: .10rem !important;
+        font-size: 10px;
+    }
+    .girisindex td {
+        font-size: 10px;
+    }
+    .girisindex .btn {
+        font-size: .375rem;
+    }
+    .girisindex .aciliyettd {
+        display: none;
+    }
+    .girisindex .aciliyetth {
+         display: none;
+     }
+    .girisindex .badge {
+        font-size: .375rem;
+    }
+    .girisindex table td {
+        /*width: 100%;*/
+        padding: .05rem;
+        
+    }
+    .portalrow h1 {
+        font-size: 1.2rem;
+    }
+    .portalrow h2 {
+        font-size: 1.2rem;
+    }
+    .portalrow p {
+        font-size: 0.9rem;
+    }
+    
+    .adminrow h2 {
+        font-size: 18px;
+    }
+    .adminrow .card-header {
+        padding: .35rem 1.25rem;
+    }
+    .adminrow .card-footer {
+        padding: .15rem 1.25rem;
+    }
+    .adminrow .card {
+        margin-bottom: 0px;
+    }
+    .tablerow h2 {
+        font-size: 18px;
+    }
+    .tablerow th {
+        padding: .10rem !important;
+        font-size: 10px;
+    }
+    .tablerow td {
+        font-size: 10px;
+        padding: .40rem !important;
+    }
+    .tablerow .btn {
+        font-size: .475rem;
+    }
+    .tablerow .aciklamattd {
+        display: none;
+    }
+    .tablerow .aciklamatth {
+        display: none;
+    }
+    .tablerow font {
+        font-size: 8px;
+    }
+
+
+
+
+
+}

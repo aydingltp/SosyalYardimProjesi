@@ -60,9 +60,8 @@
 <div class="container details2" style="width:900px; margin-top:30px">
     <div class="row">
 
-        <div class="card" style="width:100%; margin-top:20px; margin-bottom:20px; border:solid 2px rgba(184, 181, 181, 0.85)">
+        <div class="card" style="width:100%; margin-top:20px; margin-bottom:20px;">
             <div class="alert alert-warning" style="text-align:center"><strong>YAPILAN YARDIMLAR</strong>  </div>
-
             <table class="table table-bordered">
                 @foreach (var item in Model.Yardimlar.Where(i => i.Onay == true))
                 {
@@ -76,7 +75,6 @@
                         <td width="18%">
                             <font face="Comic sans MS" size="2">@Html.DisplayFor(modelItem => item.Tarih)</font>
                         </td>
-
                     </tr>
 
                 }
@@ -103,12 +101,9 @@
             {
 
                 <div class="card" style="width:100%; padding:20px;">
-                    <form role="form" class="form-inline">
-                        <div class="form-group row">
-                            <textarea style="width:1000px" class="form-control col-sm-8 " id="yardim" typeof="text" rows="1" placeholder="Ör:  *****   yardımı yapıldı. "></textarea>
-                            <div class="col-sm-4">
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Yardım Yap</button>
-                            </div>
+                    <form role="form" >
+                        <div class="form-group">
+                            <textarea style="" class="form-control" id="yardim" typeof="text" rows="1" placeholder="Ör: *** yardımı yapıldı. "></textarea>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -128,8 +123,8 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">Yardım Yap</button>
 
                     </form>
                 </div>
